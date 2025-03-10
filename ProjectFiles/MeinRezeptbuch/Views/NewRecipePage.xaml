@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeinRezeptbuch.Views.NewRecipePage"
+             xmlns:vm="clr-namespace:MeinRezeptbuch.ViewModels"
+             x:DataType="vm:NewRecipeViewModel"
+             BackgroundColor="{StaticResource Background}">
+    
+    <ScrollView>
+        <VerticalStackLayout>
+            
+            <Label Text="Add new Recipe"/>
+
+            <Entry Placeholder="Name"
+                   TextColor="Black"
+                   BackgroundColor="#FFFFFF"
+                   Margin="10"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Start"
+                />
+
+            <Entry Placeholder="Description"
+                   TextColor="Black"
+                   BackgroundColor="#FFFFFF"
+                   Margin="10"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Start"
+                />
+
+            <Entry Placeholder="Instructions"
+                   TextColor="Black"
+                   BackgroundColor="#FFFFFF"
+                   Margin="10"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Start"
+                />
+
+
+            <Label Text="Add ingredients"/>
+            <Button
+                Command="{Binding AddIngredientCommand}"
+                Text="Add Ingredient"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
+                </Grid.ColumnDefinitions>
+                <Button
+                Grid.Column="0"
+                Command="{Binding Cancel_Button_ClickedCommand}"
+                Text="Close" />
+
+                <Button
+                Grid.Column="1"
+                Command="{Binding SaveRecipeCommand}"
+                Text="Save"/>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,252 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|c:\\users\\soere\\documents\\dev\\meinrezeptbuch\\projectfiles\\meinrezeptbuch\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|solutionrelative:appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|c:\\users\\soere\\documents\\dev\\meinrezeptbuch\\projectfiles\\meinrezeptbuch\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|c:\\users\\soere\\documents\\dev\\meinrezeptbuch\\projectfiles\\meinrezeptbuch\\models\\shoppinglist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|solutionrelative:models\\shoppinglist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|c:\\users\\soere\\documents\\dev\\meinrezeptbuch\\projectfiles\\meinrezeptbuch\\models\\recipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|solutionrelative:models\\recipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|c:\\users\\soere\\documents\\dev\\meinrezeptbuch\\projectfiles\\meinrezeptbuch\\resources\\styles\\colors.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|solutionrelative:resources\\styles\\colors.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|c:\\users\\soere\\documents\\dev\\meinrezeptbuch\\projectfiles\\meinrezeptbuch\\models\\ingrediententry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|solutionrelative:models\\ingrediententry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|c:\\users\\soere\\documents\\dev\\meinrezeptbuch\\projectfiles\\meinrezeptbuch\\models\\ingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|solutionrelative:models\\ingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|c:\\users\\soere\\documents\\dev\\meinrezeptbuch\\projectfiles\\meinrezeptbuch\\views\\addingrediententrypopuppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|solutionrelative:views\\addingrediententrypopuppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|c:\\users\\soere\\documents\\dev\\meinrezeptbuch\\projectfiles\\meinrezeptbuch\\views\\newrecipepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|solutionrelative:views\\newrecipepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|c:\\users\\soere\\documents\\dev\\meinrezeptbuch\\projectfiles\\meinrezeptbuch\\views\\newrecipepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|solutionrelative:views\\newrecipepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|c:\\users\\soere\\documents\\dev\\meinrezeptbuch\\projectfiles\\meinrezeptbuch\\viewmodels\\newrecipeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|solutionrelative:viewmodels\\newrecipeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|c:\\users\\soere\\documents\\dev\\meinrezeptbuch\\projectfiles\\meinrezeptbuch\\viewmodels\\recipesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|solutionrelative:viewmodels\\recipesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|c:\\users\\soere\\documents\\dev\\meinrezeptbuch\\projectfiles\\meinrezeptbuch\\views\\recipespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|solutionrelative:views\\recipespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|c:\\users\\soere\\documents\\dev\\meinrezeptbuch\\projectfiles\\meinrezeptbuch\\views\\addingrediententrypopuppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22E0F639-6A13-46F4-94D5-5ED1601EBD79}|MeinRezeptbuch.csproj|solutionrelative:views\\addingrediententrypopuppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 252,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T11:43:20.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Shoppinglist.cs",
+              "DocumentMoniker": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Models\\Shoppinglist.cs",
+              "RelativeDocumentMoniker": "Models\\Shoppinglist.cs",
+              "ToolTip": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Models\\Shoppinglist.cs",
+              "RelativeToolTip": "Models\\Shoppinglist.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T11:43:19.204Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Colors.xaml",
+              "DocumentMoniker": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Resources\\Styles\\Colors.xaml",
+              "RelativeDocumentMoniker": "Resources\\Styles\\Colors.xaml",
+              "ToolTip": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Resources\\Styles\\Colors.xaml",
+              "RelativeToolTip": "Resources\\Styles\\Colors.xaml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAADUAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-04T11:42:16.018Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Recipe.cs",
+              "DocumentMoniker": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Models\\Recipe.cs",
+              "RelativeDocumentMoniker": "Models\\Recipe.cs",
+              "ToolTip": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Models\\Recipe.cs",
+              "RelativeToolTip": "Models\\Recipe.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T11:40:58.039Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IngredientEntry.cs",
+              "DocumentMoniker": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Models\\IngredientEntry.cs",
+              "RelativeDocumentMoniker": "Models\\IngredientEntry.cs",
+              "ToolTip": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Models\\IngredientEntry.cs",
+              "RelativeToolTip": "Models\\IngredientEntry.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T11:40:55.637Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Ingredient.cs",
+              "DocumentMoniker": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Models\\Ingredient.cs",
+              "RelativeDocumentMoniker": "Models\\Ingredient.cs",
+              "ToolTip": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Models\\Ingredient.cs",
+              "RelativeToolTip": "Models\\Ingredient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T11:40:24.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AddIngredientEntryPopUpPage.xaml",
+              "DocumentMoniker": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Views\\AddIngredientEntryPopUpPage.xaml",
+              "RelativeDocumentMoniker": "Views\\AddIngredientEntryPopUpPage.xaml",
+              "ToolTip": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Views\\AddIngredientEntryPopUpPage.xaml",
+              "RelativeToolTip": "Views\\AddIngredientEntryPopUpPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-02T15:16:46.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "NewRecipePage.xaml",
+              "DocumentMoniker": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Views\\NewRecipePage.xaml",
+              "RelativeDocumentMoniker": "Views\\NewRecipePage.xaml",
+              "ToolTip": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Views\\NewRecipePage.xaml",
+              "RelativeToolTip": "Views\\NewRecipePage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-02T15:16:36.559Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RecipesPage.xaml",
+              "DocumentMoniker": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Views\\RecipesPage.xaml",
+              "RelativeDocumentMoniker": "Views\\RecipesPage.xaml",
+              "ToolTip": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Views\\RecipesPage.xaml",
+              "RelativeToolTip": "Views\\RecipesPage.xaml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-02T15:12:05.735Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "NewRecipePage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Views\\NewRecipePage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\NewRecipePage.xaml.cs",
+              "ToolTip": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Views\\NewRecipePage.xaml.cs",
+              "RelativeToolTip": "Views\\NewRecipePage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T15:54:05.553Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 252,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RecipesViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\ViewModels\\RecipesViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\RecipesViewModel.cs",
+              "ToolTip": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\ViewModels\\RecipesViewModel.cs",
+              "RelativeToolTip": "ViewModels\\RecipesViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T15:12:12.774Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "NewRecipeViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\ViewModels\\NewRecipeViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\NewRecipeViewModel.cs",
+              "ToolTip": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\ViewModels\\NewRecipeViewModel.cs",
+              "RelativeToolTip": "ViewModels\\NewRecipeViewModel.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T13:33:31.774Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppShell.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\AppShell.xaml.cs",
+              "RelativeDocumentMoniker": "AppShell.xaml.cs",
+              "ToolTip": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\AppShell.xaml.cs",
+              "RelativeToolTip": "AppShell.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T16:01:38.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AddIngredientEntryPopUpPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Views\\AddIngredientEntryPopUpPage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\AddIngredientEntryPopUpPage.xaml.cs",
+              "ToolTip": "C:\\Users\\soere\\Documents\\Dev\\MeinRezeptbuch\\ProjectFiles\\MeinRezeptbuch\\Views\\AddIngredientEntryPopUpPage.xaml.cs",
+              "RelativeToolTip": "Views\\AddIngredientEntryPopUpPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T15:43:21.215Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

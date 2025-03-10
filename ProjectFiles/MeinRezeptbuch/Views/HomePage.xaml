@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MeinRezeptbuch.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:MeinRezeptbuch.ViewModels"
+    x:DataType="vm:HomeViewModel"
+    BackgroundColor="{StaticResource Background}">
+
+    <VerticalStackLayout Margin="5" Spacing="10">
+        <!--  Header  -->
+        <Grid ColumnDefinitions="0.8*,0.2*" RowDefinitions="Auto">
+            <!--  Overview  -->
+            
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                FontAttributes="Bold"
+                FontSize="32"
+                HorizontalOptions="Fill"
+                HorizontalTextAlignment="Center"
+                Text="Overview"
+                VerticalTextAlignment="Center" />
+            <!--  Account Button  -->
+            <Border
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="0,5,10,0"
+                BackgroundColor="LightGray"
+                HeightRequest="40"
+                HorizontalOptions="End"
+                Stroke="Transparent"
+                StrokeThickness="0"
+                VerticalOptions="Start"
+                WidthRequest="40">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20,20,20,20" />
+                </Border.StrokeShape>
+                <!--  The account initials are displayed in this circle. Replace "AB" dynamically with user initials  -->
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    Text="AB"
+                    TextColor="Black"
+                    VerticalOptions="Center" />
+
+            </Border>
+        </Grid>
+
+        <!--  Upcoming Recipes Section  -->
+        <Border
+            Padding="5"
+            Background="{StaticResource BoxType1}"
+            HeightRequest="400"
+            Stroke="Blue"
+            StrokeThickness="2">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10,10,10,10" />
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow
+                    Brush="Black"
+                    Opacity="0.6"
+                    Radius="40"
+                    Offset="5,20" />
+            </Border.Shadow>
+            <!--  Content  -->
+            <VerticalStackLayout>
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    HeightRequest="35"
+                    HorizontalOptions="StartAndExpand"
+                    MaximumHeightRequest="50"
+                    Text="Upcoming Recipes"
+                    VerticalOptions="Start" />
+
+                <BoxView
+                    Margin="0,0,0,10"
+                    BackgroundColor="Brown"
+                    HeightRequest="1"
+                    Opacity="0.8" />
+
+                <!--  Recepi Boxes  -->
+                <Grid
+                    Margin="0"
+                    Padding="0"
+                    ColumnDefinitions="0.09*,0.25*,0.09*,0.25*,0.09*,0.25*"
+                    RowDefinitions="Auto,Auto,Auto"
+                    RowSpacing="0">
+                    <BoxView 
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        BackgroundColor="Gray" 
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        BackgroundColor="Gray"
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        BackgroundColor="Gray" 
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        BackgroundColor="Gray"
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="0"
+                        Grid.Column="4"
+                        BackgroundColor="Blue"
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="0"
+                        Grid.Column="5"
+                        BackgroundColor="blue"
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        BackgroundColor="blue"
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        BackgroundColor="blue"
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        BackgroundColor="blue"
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        BackgroundColor="blue"
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        BackgroundColor="Green"
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="1"
+                        Grid.Column="5"
+                        BackgroundColor="Green"
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        BackgroundColor="Green"
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        BackgroundColor="Green"
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        BackgroundColor="Green"
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        BackgroundColor="Green"
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="2"
+                        Grid.Column="4"
+                        BackgroundColor="Gray"
+                        Opacity="0.5"/>
+                    <BoxView 
+                        Grid.Row="2"
+                        Grid.Column="5"
+                        BackgroundColor="Gray"
+                        Opacity="0.5"/>
+                    <!--  Lable 1  -->
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="0,0,0,0"
+                        HorizontalOptions="End"
+                        MaximumHeightRequest="15"
+                        Rotation="-90"
+                        Text="{Binding Day1.Day}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0,10,0,10"
+                        Padding="10"
+                        BackgroundColor="{Binding Recipe1.BackgroundColor}"
+                        HeightRequest="90"
+                        Stroke="{Binding Recipe1.MealTypeColor}"
+                        StrokeThickness="2"
+                        WidthRequest="90">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow
+                            Brush="Black"
+                            Opacity="0.6"
+                            Radius="60"
+                            Offset="5,20" />
+                        </Border.Shadow>
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Recipe1.RecipeName}"
+                            VerticalOptions="Center" />
+                    </Border>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="0,0,3,0"
+                        HorizontalOptions="End"
+                        MaximumHeightRequest="15"
+                        Rotation="-90"
+                        Text="{Binding Day2.Day}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Margin="0,0,10,0"
+                        Padding="10"
+                        BackgroundColor="{Binding Recipe2.BackgroundColor}"
+                        HeightRequest="90"
+                        Stroke="{Binding Recipe2.MealTypeColor}"
+                        StrokeThickness="2"
+                        WidthRequest="90">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow
+                            Brush="Black"
+                            Opacity="0.6"
+                            Radius="60"
+                            Offset="5,20" />
+                        </Border.Shadow>
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Recipe2.RecipeName}"
+                            VerticalOptions="Center" />
+                    </Border>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="4"
+                        Margin="0,0,3,0"
+                        HorizontalOptions="End"
+                        MaximumHeightRequest="15"
+                        Rotation="-90"
+                        Text="{Binding Day3.Day}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="5"
+                        Margin="0,0,10,0"
+                        Padding="10"
+                        BackgroundColor="{Binding Recipe3.BackgroundColor}"
+                        HeightRequest="90"
+                        Stroke="{Binding Recipe3.MealTypeColor}"
+                        StrokeThickness="2"
+                        WidthRequest="90">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow
+                            Brush="Black"
+                            Opacity="0.6"
+                            Radius="60"
+                            Offset="5,20" />
+                        </Border.Shadow>
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Recipe3.RecipeName}"
+                            VerticalOptions="Center" />
+                    </Border>
+                    <!--  Row 2  -->
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="0,10,0,10"
+                        HorizontalOptions="End"
+                        MaximumHeightRequest="15"
+                        Rotation="-90"
+                        Text="{Binding Day4.Day}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="0,10,0,10"
+                        Padding="10"
+                        BackgroundColor="{Binding Recipe4.BackgroundColor}"
+                        HeightRequest="90"
+                        Stroke="{Binding Recipe4.MealTypeColor}"
+                        StrokeThickness="2"
+                        WidthRequest="90">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow
+                            Brush="Black"
+                            Opacity="0.6"
+                            Radius="60"
+                            Offset="5,20" />
+                        </Border.Shadow>
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Recipe4.RecipeName}"
+                            VerticalOptions="Center" />
+                    </Border>
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="0,0,3,0"
+                        HorizontalOptions="End"
+                        MaximumHeightRequest="15"
+                        Rotation="-90"
+                        Text="{Binding Day5.Day}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Margin="0,0,10,0"
+                        Padding="10"
+                        BackgroundColor="{Binding Recipe5.BackgroundColor}"
+                        HeightRequest="90"
+                        Stroke="{Binding Recipe5.MealTypeColor}"
+                        StrokeThickness="2"
+                        WidthRequest="90">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow
+                            Brush="Black"
+                            Opacity="0.6"
+                            Radius="60"
+                            Offset="5,20" />
+                        </Border.Shadow>
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Recipe5.RecipeName}"
+                            VerticalOptions="Center" />
+                    </Border>
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        Margin="0,0,3,0"
+                        HorizontalOptions="End"
+                        MaximumHeightRequest="15"
+                        Rotation="-90"
+                        Text="{Binding Day6.Day}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="5"
+                        Margin="0,0,10,0"
+                        Padding="10"
+                        BackgroundColor="{Binding Recipe6.BackgroundColor}"
+                        HeightRequest="90"
+                        Stroke="{Binding Recipe6.MealTypeColor}"
+                        StrokeThickness="2"
+                        WidthRequest="90">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow
+                            Brush="Black"
+                            Opacity="0.6"
+                            Radius="60"
+                            Offset="5,20" />
+                        </Border.Shadow>
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Recipe6.RecipeName}"
+                            VerticalOptions="Center" />
+                    </Border>
+
+                    <!--  Row 3  -->
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="0,0,0,0"
+                        HorizontalOptions="End"
+                        MaximumHeightRequest="15"
+                        Rotation="-90"
+                        Text="{Binding Day7.Day}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="0,0,0,0"
+                        Padding="10"
+                        BackgroundColor="{Binding Recipe7.BackgroundColor}"
+                        HeightRequest="90"
+                        Stroke="{Binding Recipe7.MealTypeColor}"
+                        StrokeThickness="2"
+                        WidthRequest="90">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow
+                            Brush="Black"
+                            Opacity="0.6"
+                            Radius="60"
+                            Offset="5,20" />
+                        </Border.Shadow>
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Recipe7.RecipeName}"
+                            VerticalOptions="Center" />
+                    </Border>
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Margin="0,0,3,0"
+                        HorizontalOptions="End"
+                        MaximumHeightRequest="15"
+                        Rotation="-90"
+                        Text="{Binding Day8.Day}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Margin="0,10,10,10"
+                        Padding="10"
+                        BackgroundColor="{Binding Recipe8.BackgroundColor}"
+                        HeightRequest="90"
+                        Stroke="{Binding Recipe8.MealTypeColor}"
+                        StrokeThickness="2"
+                        WidthRequest="90">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow
+                            Brush="Black"
+                            Opacity="0.6"
+                            Radius="60"
+                            Offset="5,20" />
+                        </Border.Shadow>
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Recipe8.RecipeName}"
+                            VerticalOptions="Center" />
+                    </Border>
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="4"
+                        Margin="0,0,3,0"
+                        HorizontalOptions="End"
+                        MaximumHeightRequest="15"
+                        Rotation="-90"
+                        Text="{Binding Day9.Day}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="5"
+                        Margin="0,0,10,0"
+                        Padding="10"
+                        BackgroundColor="{Binding Recipe9.BackgroundColor}"
+                        HeightRequest="90"
+                        Stroke="{Binding Recipe9.MealTypeColor}"
+                        StrokeThickness="2"
+                        WidthRequest="90">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow
+                            Brush="Black"
+                            Opacity="0.6"
+                            Radius="60"
+                            Offset="5,20" />
+                        </Border.Shadow>
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Recipe9.RecipeName}"
+                            VerticalOptions="Center" />
+                    </Border>
+
+                </Grid>
+            </VerticalStackLayout>
+
+        </Border>
+
+        <!--  Missing Ingredients Section  -->
+        <Border
+            Padding="5"
+            Background="{StaticResource BoxType2}"
+            Stroke="Bisque"
+            StrokeThickness="2"
+            VerticalOptions="EndAndExpand">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10,10,10,10" />
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow
+                    Brush="Black"
+                    Opacity="0.6"
+                    Radius="40"
+                    Offset="5,20" />
+            </Border.Shadow>
+            <Label
+                FontAttributes="Bold"
+                FontSize="22"
+                HeightRequest="35"
+                HorizontalOptions="StartAndExpand"
+                MaximumHeightRequest="50"
+                Text="Missing Ingredients"
+                VerticalOptions="Start" />
+        </Border>
+
+    </VerticalStackLayout>
+
+</ContentPage>

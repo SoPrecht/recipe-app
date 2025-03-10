@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup
+    x:Class="MeinRezeptbuch.Views.AddIngredientEntryPopUpPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+    xmlns:serv="clr-namespace:MeinRezeptbuch.Services">
+    <VerticalStackLayout MinimumWidthRequest="300">
+
+        <Label
+            HorizontalOptions="Center"
+            Text="Add Ingredient"
+            VerticalOptions="Center" />
+
+        <Entry x:Name="ingredientNameEntry" Placeholder="Ingredient Name" />
+
+        <Picker
+            x:Name="ingredientTypePicker"
+            Title="Select Ingredient Type"
+            ItemsSource="{Binding Source={x:Static serv:EnumHelper.IngredientTypes}}" />
+
+        <Picker
+            x:Name="unitPicker"
+            Title="Select Unit"
+            ItemsSource="{Binding Source={x:Static serv:EnumHelper.UnitEnums}}" />
+
+        <Entry
+            x:Name="amountEntry"
+            Keyboard="Numeric"
+            Placeholder="Amount" />
+
+        <Entry x:Name="notesEntry" Placeholder="Notes (Optional)" />
+
+
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.Column="0"
+                Clicked="Cancel_Button_Clicked"
+                Text="Close" />
+
+            <Button
+                Grid.Column="1"
+                Clicked="Save_Button_Clicked"
+                Text="Create" />
+        </Grid>
+
+    </VerticalStackLayout>
+</mct:Popup>
