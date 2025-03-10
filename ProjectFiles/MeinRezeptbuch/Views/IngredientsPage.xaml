@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MeinRezeptbuch.Views.IngredientsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:MeinRezeptbuch.ViewModels"
+    x:DataType="vm:IngredientViewModel">
+
+    <VerticalStackLayout Padding="20">
+
+        <Entry Placeholder="Zutat Name" Text="{Binding Name}" />
+        <Entry Placeholder="Beschreibung" Text="{Binding Description}" />
+
+        <Picker
+            Title="Kategorie"
+            ItemsSource="{Binding Source={x:Static local:EnumHelpers.GetIngredientTypes}}"
+            SelectedItem="{Binding Type}" />
+
+        <Button Command="{Binding AddIngredientAsyncCommand}" Text="Hinzufügen" />
+
+        <CollectionView ItemsSource="{Binding Ingredients}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:IngredientViewModel}}, Path=DeleteIngredientAsyncCommand}"
+                                    CommandParameter="{Binding}"
+                                    Text="Löschen" />
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Grid Padding="10">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="{Binding Name}" />
+                            <Label FontSize="14" Text="{Binding Description}" />
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

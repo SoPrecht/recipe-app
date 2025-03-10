@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup
+    x:Class="MeinRezeptbuch.Views.AddIngredientEntryPopUpPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+    xmlns:serv="clr-namespace:MeinRezeptbuch.Services"
+    xmlns:vm="clr-namespace:MeinRezeptbuch.ViewModels"
+    x:DataType="vm:IngredientEntryViewModel">
+
+    <VerticalStackLayout MinimumWidthRequest="300">
+
+        <Label
+            HorizontalOptions="Center"
+            Text="Add Ingredient"
+            VerticalOptions="Center" />
+
+        <Entry
+            x:Name="ingredientNameEntry"
+            Placeholder="Ingredient Name"
+            Text="{Binding IngredientName}" />
+
+        <Picker
+            x:Name="ingredientTypePicker"
+            Title="Select Ingredient Type"
+            ItemsSource="{Binding IngredientTypes}"
+            SelectedItem="{Binding SelectedIngredientType}" />
+
+        <Picker
+            x:Name="unitPicker"
+            Title="Select Unit"
+            ItemsSource="{Binding Units}"
+            SelectedItem="{Binding Unit}" />
+
+        <Entry
+            x:Name="amountEntry"
+            Keyboard="Numeric"
+            Placeholder="Amount"
+            Text="{Binding Amount}" />
+
+        <Entry
+            x:Name="notesEntry"
+            Placeholder="Notes (Optional)"
+            Text="{Binding Notes}" />
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+            <Button
+                Grid.Column="0"
+                Command="{Binding ClosePopupCommand}"
+                Text="Close" />
+
+            <Button
+                Grid.Column="1"
+                Command="{Binding AddIngredientEntryAsyncCommand}"
+                Text="Create" />
+        </Grid>
+
+    </VerticalStackLayout>
+</mct:Popup>
