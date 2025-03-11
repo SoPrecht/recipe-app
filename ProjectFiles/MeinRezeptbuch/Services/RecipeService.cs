@@ -73,12 +73,6 @@ namespace MeinRezeptbuch.Services
             await _ingredientEntryService.DeleteIngredientEntriesByRecipeIdAsync( recipe.Id);
             return await _database.DeleteAsync(recipe);
         }
-        // Delete a recipe and its associated ingredient entries
-        public async Task<int> DeleteRecipeAsync(int recipeId)
-        {
-            await _ingredientEntryService.DeleteIngredientEntriesByRecipeIdAsync(recipeId);
-            return await _database.DeleteAsync(recipeId);
-        }
 
     }
 }

@@ -15,6 +15,7 @@ namespace MeinRezeptbuch.ViewModels
         private readonly IngredientEntryService _ingredientEntryService;
         private int _recipeId;
         private bool isExisting;
+        private Recipe _recipe;
 
         [ObservableProperty]
         public string? name;
@@ -30,23 +31,6 @@ namespace MeinRezeptbuch.ViewModels
             _recipeService = new RecipeService();
             _ingredientEntryService = new IngredientEntryService();
             ingredients = new ObservableCollection<IngredientEntry>();
-
-            if (recipeId.HasValue && recipeId.Value > 0)
-            {
-                // Load existing recipe
-                LoadRecipe(recipeId.Value);
-                _recipeId = recipeId.Value;
-            }
-            else
-            {
-                // Create a new recipe and store the generated ID
-                var newRecipe = new Recipe { Name = "New Recipe" };
-                _recipeId = _recipeService.AddRecipeAsync(newRecipe).Result; // Get the ID immediately
-
-                Name = newRecipe.Name;
-                Description = newRecipe.Description;
-                Instructions = newRecipe.Instructions;
-            }
         }
 
         public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -55,17 +39,16 @@ namespace MeinRezeptbuch.ViewModels
             {
                 _recipeId = id;
 
-                if (_recipeId > 0)
-                {
-                    isExisting = true;
-                    LoadRecipe(_recipeId);
-                }
-                else
-                {
-                    isExisting = false;
-                    CreateNewRecipe();
-                }
+                isExisting = true;
+                LoadRecipe(_recipeId);
+
             }
+            else
+            {
+                isExisting = false;
+                CreateNewRecipe();
+            }
+            
         }
 
         /// <summary>
@@ -76,9 +59,10 @@ namespace MeinRezeptbuch.ViewModels
             var recipe = await _recipeService.GetRecipeByIdAsync(recipeId);
             if (recipe != null)
             {
-                Name = recipe.Name;
-                Description = recipe.Description;
-                Instructions = recipe.Instructions;
+                _recipe = recipe;
+                Name = _recipe.Name;
+                Description = _recipe.Description;
+                Instructions = _recipe.Instructions;
 
                 // Load ingredient entries
                 var ingredientEntries = await _ingredientEntryService.GetIngredientEntriesByRecipeIdAsync (recipeId);
@@ -93,13 +77,14 @@ namespace MeinRezeptbuch.ViewModels
 
         private async void CreateNewRecipe()
         {
-            var newRecipe = new Recipe { Name = "New Recipe" };
-            await _recipeService.AddRecipeAsync(newRecipe);
+            _recipe = new Recipe { Name = "New Recipe" };
+            await _recipeService.AddRecipeAsync(_recipe); // 🔹 Save to DB first
+            _recipeId = _recipe.Id;  // 🔹 Store the new ID
 
-            _recipeId = newRecipe.Id;  // Store the generated ID
-            Name = newRecipe.Name;
-            Description = newRecipe.Description;
-            Instructions = newRecipe.Instructions;
+            // Update UI properties
+            Name = _recipe.Name;
+            Description = _recipe.Description;
+            Instructions = _recipe.Instructions;
         }
 
         [RelayCommand]
@@ -111,15 +96,11 @@ namespace MeinRezeptbuch.ViewModels
                 return;
             }
 
-            var updatedRecipe = new Recipe
-            {
-                Id = _recipeId,
-                Name = this.Name,
-                Description = this.Description,
-                Instructions = this.Instructions
-            };
+            _recipe.Name = Name;
+            _recipe.Description = Description;
+            _recipe.Instructions = Instructions;
 
-            await _recipeService.UpdateRecipeAsync(updatedRecipe);
+            await _recipeService.UpdateRecipeAsync(_recipe);
 
             foreach (var ingredient in Ingredients)
             {
@@ -150,7 +131,7 @@ namespace MeinRezeptbuch.ViewModels
         {
             if (!isExisting)
             {
-                await _recipeService.DeleteRecipeAsync(_recipeId); // Delete unsaved recipe
+                await _recipeService.DeleteRecipeAsync(_recipe); // Delete unsaved recipe
             }
             await AppShell.Current.GoToAsync(nameof(RecipesPage));
         }
