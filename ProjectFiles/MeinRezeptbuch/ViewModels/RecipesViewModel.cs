@@ -14,9 +14,9 @@ namespace MeinRezeptbuch.ViewModels
         private readonly RecipeService _recipeService;
         [ObservableProperty]
         private ObservableCollection<Recipe> recipes;
-        public RecipesViewModel()
+        public RecipesViewModel(RecipeService recipeService)
         {
-            _recipeService = new RecipeService();
+            _recipeService = recipeService;
             recipes = new ObservableCollection<Recipe>();
             Task.Run(async () => await RefreshRecipesAsync());
 

@@ -11,9 +11,17 @@ public class IngredientService
 
     public IngredientService()
     {
+        try
+        {
         string dbPath = Path.Combine(FileSystem.AppDataDirectory, "ingredients.db");
         _database = new SQLiteAsyncConnection(dbPath);
         _database.CreateTableAsync<Ingredient>().Wait();
+        }
+        catch (Exception ex)
+        {
+            // Log or handle the exception
+            Console.WriteLine($"An error occurred: {ex.Message}");
+        }
     }
 
     // Add a new ingredient
@@ -44,5 +52,11 @@ public class IngredientService
     public Task<int> DeleteIngredientAsync(Ingredient ingredient)
     {
         return _database.DeleteAsync(ingredient);
+    }
+
+    // Get ingredient by Id
+    public Task<Ingredient> GetIngredientByIdAsync(int ingredientId)
+    {
+        return _database.Table<Ingredient>().Where(i => i.ID == ingredientId).FirstOrDefaultAsync();
     }
 }

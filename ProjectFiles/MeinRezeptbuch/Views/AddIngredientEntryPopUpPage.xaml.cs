@@ -14,5 +14,6 @@ public partial class AddIngredientEntryPopUpPage : Popup
     {
         InitializeComponent();
         BindingContext = vm;
+        vm.SetPopupReference(this);
     }
 }

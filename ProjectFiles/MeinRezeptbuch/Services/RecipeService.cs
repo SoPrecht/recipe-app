@@ -14,16 +14,14 @@ namespace MeinRezeptbuch.Services
         private readonly SQLiteAsyncConnection _database;
         private readonly IngredientEntryService _ingredientEntryService;
 
-        public RecipeService()
+        public RecipeService(IngredientEntryService ingredientEntryService)
         {
             try
             {
                 string dbPath = Path.Combine(FileSystem.AppDataDirectory, "recipes.db");
-                Debug.WriteLine($"Database Path: {dbPath}");
                 _database = new SQLiteAsyncConnection(dbPath);
                 _database.CreateTableAsync<Recipe>().Wait();
-                _database.CreateTableAsync<IngredientEntry>().Wait(); // Ensure IngredientEntry is created after Recipe
-                _ingredientEntryService = new IngredientEntryService();
+                _ingredientEntryService = ingredientEntryService;
             }
             catch (Exception ex)
             {

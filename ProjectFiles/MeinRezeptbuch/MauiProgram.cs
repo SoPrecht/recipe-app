@@ -52,6 +52,13 @@ namespace MeinRezeptbuch
             //builder.Services.AddSingleton<AddIngredientEntryPopUpPage>();
             //builder.Services.AddSingleton<AddIngredientEntryPopUpPage>();
 
+            // Register Services as Singleton
+            builder.Services.AddSingleton<RecipeService>();
+            builder.Services.AddSingleton<IngredientService>();
+            builder.Services.AddSingleton<IngredientEntryService>();
+
+
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

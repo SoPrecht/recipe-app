@@ -4,6 +4,7 @@ using MeinRezeptbuch.Services;
 using MeinRezeptbuch.Models;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using CommunityToolkit.Maui.Views;
 
 
 namespace MeinRezeptbuch.ViewModels
@@ -12,6 +13,7 @@ namespace MeinRezeptbuch.ViewModels
     {
         private readonly IngredientService _ingredientService;
         private readonly IngredientEntryService _ingredientEntryService;
+        private Popup? _popup;
 
         public ObservableCollection<IngredientEntry> IngredientEntries { get; } = new();
 
@@ -35,12 +37,18 @@ namespace MeinRezeptbuch.ViewModels
 
         public int RecipeId { get; private set; }
 
-        public IngredientEntryViewModel(int? recipeId = null)
+
+        public IngredientEntryViewModel(IngredientEntryService ingredientEntryService, IngredientService ingredientService,int? recipeId = null)
         {
-            _ingredientService = new IngredientService();
-            _ingredientEntryService = new IngredientEntryService();
+            _ingredientService = ingredientService;
+            _ingredientEntryService = ingredientEntryService;
             RecipeId = recipeId ?? 0;
             LoadIngredientEntries();
+        }
+
+        public void SetPopupReference(Popup popup)
+        {
+            _popup = popup;
         }
 
         private async void LoadIngredientEntries()
@@ -66,7 +74,7 @@ namespace MeinRezeptbuch.ViewModels
             }
 
             // Create new ingredient entry
-            var ingredientEntry = new IngredientEntry(RecipeId , ingredient.ID, Unit, Amount, Notes);
+            var ingredientEntry = new IngredientEntry(RecipeId , ingredient.ID, ingredient.Name, Unit, Amount, Notes);
             await _ingredientEntryService.AddIngredientEntryAsync(ingredientEntry);
             LoadIngredientEntries();
         }
@@ -81,7 +89,7 @@ namespace MeinRezeptbuch.ViewModels
         [RelayCommand]
         public void ClosePopup()
         {
-            Shell.Current?.Navigation.PopModalAsync();
+            _popup.Close();
         }
     }
 }

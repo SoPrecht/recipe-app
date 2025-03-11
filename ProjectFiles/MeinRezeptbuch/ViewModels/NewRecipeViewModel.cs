@@ -5,6 +5,7 @@ using MeinRezeptbuch.Services;
 using MeinRezeptbuch.Views;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace MeinRezeptbuch.ViewModels
@@ -26,10 +27,10 @@ namespace MeinRezeptbuch.ViewModels
         [ObservableProperty]
         public ObservableCollection<IngredientEntry> ingredients;
 
-        public NewRecipeViewModel(int? recipeId = null)
+        public NewRecipeViewModel(RecipeService recipeService, IngredientEntryService ingredientEntryService, int? recipeId = null)
         {
-            _recipeService = new RecipeService();
-            _ingredientEntryService = new IngredientEntryService();
+            _recipeService = recipeService;
+            _ingredientEntryService = ingredientEntryService;
             ingredients = new ObservableCollection<IngredientEntry>();
         }
 
@@ -68,9 +69,26 @@ namespace MeinRezeptbuch.ViewModels
                 var ingredientEntries = await _ingredientEntryService.GetIngredientEntriesByRecipeIdAsync (recipeId);
                 foreach (var entry in ingredientEntries)
                 {
-                    var ingredient = await _ingredientEntryService.GetIngredientByIdAsync(entry.IngredientId);
-                    entry.IngredientName = ingredient?.Name ?? "Unknown";
-                    Ingredients.Add(entry);
+                    Debug.WriteLine($"Processing entry with ID: {entry.Id}, IngredientId: {entry.IngredientId}");
+
+                    try
+                    {
+                        var ingredient = await _ingredientEntryService.GetIngredientByIdAsync(entry.IngredientId);
+
+                        if (ingredient == null)
+                        {
+                            Debug.WriteLine($"Ingredient not found for ID: {entry.IngredientId}");
+                            continue; // Prevent adding null data
+                        }
+
+                        entry.IngredientName = ingredient.Name;
+
+                        Ingredients.Add(entry);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"Error in GetIngredientByIdAsync: {ex.Message}");
+                    }
                 }
             }
         }

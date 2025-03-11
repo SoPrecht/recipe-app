@@ -10,12 +10,22 @@ namespace MeinRezeptbuch.Services
     public class IngredientEntryService
     {
         private readonly SQLiteAsyncConnection _database;
+        private readonly IngredientService _ingredientService;
 
-        public IngredientEntryService()
+        public IngredientEntryService(IngredientService ingredientService)
         {
-            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "ingredientEntries.db");
-            _database = new SQLiteAsyncConnection(dbPath);
-            _database.CreateTableAsync<IngredientEntry>().Wait();
+            try
+            {
+                string dbPath = Path.Combine(FileSystem.AppDataDirectory, "ingredientEntries.db");
+                _database = new SQLiteAsyncConnection(dbPath);
+                _database.CreateTableAsync<IngredientEntry>().Wait();
+                _ingredientService = ingredientService;
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
         }
 
         // Add a new ingredient entry
@@ -57,7 +67,7 @@ namespace MeinRezeptbuch.Services
         // Retrieve an ingredient entry by ID
         public async Task<Ingredient> GetIngredientByIdAsync(int ingredientId)
         {
-            return await _database.Table<Ingredient>().Where(i => i.ID == ingredientId).FirstOrDefaultAsync();
+            return await _ingredientService.GetIngredientByIdAsync(ingredientId);
         }
 
     }

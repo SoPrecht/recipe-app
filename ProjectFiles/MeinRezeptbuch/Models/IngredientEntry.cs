@@ -20,10 +20,11 @@ namespace MeinRezeptbuch.Models
 
         public IngredientEntry() { }
 
-        public IngredientEntry(int recipeId, int ingredientId, UnitEnum unit, int amount, string? notes = null)
+        public IngredientEntry(int recipeId, int ingredientId, string ingredientName, UnitEnum unit, int amount, string? notes = null)
         {
             RecipeId = recipeId;
             IngredientId = ingredientId;
+            IngredientName = ingredientName;
             Unit = unit;
             Amount = amount;
             Notes = notes;

@@ -55,7 +55,7 @@
 
             <Button
                 Grid.Column="1"
-                Command="{Binding AddIngredientEntryAsyncCommand}"
+                Command="{Binding AddIngredientEntryCommand}"
                 Text="Create" />
         </Grid>
 

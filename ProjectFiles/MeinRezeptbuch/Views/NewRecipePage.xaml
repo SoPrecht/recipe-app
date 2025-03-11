@@ -3,63 +3,85 @@
     x:Class="MeinRezeptbuch.Views.NewRecipePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:vm="clr-namespace:MeinRezeptbuch.ViewModels"
     xmlns:m="clr-namespace:MeinRezeptbuch.Models"
+    xmlns:vm="clr-namespace:MeinRezeptbuch.ViewModels"
     x:DataType="vm:NewRecipeViewModel"
     BackgroundColor="{StaticResource Background}">
 
     <VerticalStackLayout Padding="10" Spacing="15">
-        <!-- Header -->
-        <Grid RowDefinitions="Auto" ColumnDefinitions="*, Auto">
-            <Label Grid.Row="0"
-                   Grid.Column="0"
-                   Text="New Recipe"
-                   FontSize="28"
-                   FontAttributes="Bold"
-                   HorizontalTextAlignment="Start"
-                   Margin="10,5,0,0" />
-            <Button Grid.Row="0"
-                    Grid.Column="1"
-                    HorizontalOptions="EndAndExpand"
-                    Margin="0,5,10,0"
-                    Text="Save"
-                    Command="{Binding SaveRecipeCommand}" />
+        <!--  Header  -->
+        <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto">
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="10,5,0,0"
+                FontAttributes="Bold"
+                FontSize="28"
+                HorizontalTextAlignment="Start"
+                Text="New Recipe" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="0,5,10,0"
+                Command="{Binding SaveRecipeCommand}"
+                HorizontalOptions="EndAndExpand"
+                Text="Save" />
         </Grid>
 
         <ScrollView>
             <VerticalStackLayout Spacing="10">
-                <!-- Recipe Name Input -->
-                <Entry Placeholder="Recipe Name" Text="{Binding Name, Mode=TwoWay}" BackgroundColor="{StaticResource InputBackground}"/>
+                <!--  Recipe Name Input  -->
+                <Entry
+                    BackgroundColor="{StaticResource InputBackground}"
+                    Placeholder="Recipe Name"
+                    Text="{Binding Name, Mode=TwoWay}" />
 
-                <!-- Recipe Description -->
-                <Editor Placeholder="Description" Text="{Binding Description, Mode=TwoWay}" BackgroundColor="{StaticResource InputBackground}"/>
+                <!--  Recipe Description  -->
+                <Editor
+                    BackgroundColor="{StaticResource InputBackground}"
+                    Placeholder="Description"
+                    Text="{Binding Description, Mode=TwoWay}" />
 
-                <!-- Recipe Instructions -->
-                <Editor Placeholder="Instructions" Text="{Binding Instructions, Mode=TwoWay}" BackgroundColor="{StaticResource InputBackground}" HeightRequest="150"/>
+                <!--  Recipe Instructions  -->
+                <Editor
+                    BackgroundColor="{StaticResource InputBackground}"
+                    HeightRequest="150"
+                    Placeholder="Instructions"
+                    Text="{Binding Instructions, Mode=TwoWay}" />
 
-                <!-- Ingredients List -->
-                <Label Text="Ingredients" FontSize="22" FontAttributes="Bold"/>
+                <!--  Ingredients List  -->
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    Text="Ingredients" />
                 <CollectionView ItemsSource="{Binding Ingredients}" SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="m:IngredientEntry">
-                            <Border BackgroundColor="{StaticResource BoxType1}"
-                                    Stroke="{StaticResource Stroke1}"
-                                    StrokeThickness="2"
-                                    Padding="10"
-                                    Margin="5">
+                            <Border
+                                Margin="5"
+                                Padding="10"
+                                BackgroundColor="{StaticResource BoxType1}"
+                                Stroke="{StaticResource Stroke1}"
+                                StrokeThickness="2">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <!-- Ingredient Name -->
-                                    <Label Grid.Column="0" Text="{Binding IngredientName, Mode=OneWay}" FontSize="18" VerticalOptions="Center"/>
+                                    <!--  Ingredient Name  -->
+                                    <Label
+                                        Grid.Column="0"
+                                        FontSize="18"
+                                        Text="{Binding IngredientName, Mode=OneWay}"
+                                        VerticalOptions="Center" />
 
-                                    <!-- Ingredient Amount & Unit -->
-                                    <Label Grid.Column="1"
+                                    <!--  Ingredient Amount & Unit  -->
+                                    <Label
+                                        Grid.Column="1"
+                                        FontSize="18"
                                         Text="{Binding ., Converter={StaticResource AmountUnitConverter}}"
-                                           FontSize="18" VerticalOptions="Center"/>
+                                        VerticalOptions="Center" />
                                 </Grid>
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="10" />
@@ -69,13 +91,19 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <!-- Add Ingredient Button -->
-                <Button Text="Add Ingredient" Command="{Binding AddIngredientCommand}" BackgroundColor="{StaticResource ButtonBackground}" />
+                <!--  Add Ingredient Button  -->
+                <Button
+                    BackgroundColor="{StaticResource ButtonBackground}"
+                    Command="{Binding AddIngredientCommand}"
+                    Text="Add Ingredient" />
             </VerticalStackLayout>
         </ScrollView>
 
-        <!-- Cancel Button -->
-        <Button Text="Cancel" Command="{Binding Cancel_Button_ClickedCommand}" BackgroundColor="{StaticResource ButtonBackground}" />
+        <!--  Cancel Button  -->
+        <Button
+            BackgroundColor="{StaticResource ButtonBackground}"
+            Command="{Binding Cancel_Button_ClickedCommand}"
+            Text="Cancel" />
     </VerticalStackLayout>
 
 </ContentPage>
