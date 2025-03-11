@@ -23,19 +23,51 @@ namespace MeinRezeptbuch.ViewModels
         [ObservableProperty]
         public ObservableCollection<IngredientEntry> ingredients;
 
-        public NewRecipeViewModel()
+        public NewRecipeViewModel(int? recipeId = null)
         {
             _recipeService = new RecipeService();
             _ingredientEntryService = new IngredientEntryService();
-
-            // Create a new recipe in the database immediately
-            var newRecipe = new Recipe { Name = "New Recipe" };
-            _recipeId = _recipeService.AddRecipeAsync(newRecipe).Result; // Ensure we get the ID immediately
-
-            Name = newRecipe.Name;
-            Description = newRecipe.Description;
-            Instructions = newRecipe.Instructions;
             ingredients = new ObservableCollection<IngredientEntry>();
+
+            if (recipeId.HasValue && recipeId.Value > 0)
+            {
+                // Load existing recipe
+                LoadRecipe(recipeId.Value);
+                _recipeId = recipeId.Value;
+            }
+            else
+            {
+                // Create a new recipe and store the generated ID
+                var newRecipe = new Recipe { Name = "New Recipe" };
+                _recipeId = _recipeService.AddRecipeAsync(newRecipe).Result; // Get the ID immediately
+
+                Name = newRecipe.Name;
+                Description = newRecipe.Description;
+                Instructions = newRecipe.Instructions;
+            }
+        }
+
+        /// <summary>
+        /// Loads an existing recipe from the database.
+        /// </summary>
+        private async void LoadRecipe(int recipeId)
+        {
+            var recipe = await _recipeService.GetRecipeByIdAsync(recipeId);
+            if (recipe != null)
+            {
+                Name = recipe.Name;
+                Description = recipe.Description;
+                Instructions = recipe.Instructions;
+
+                // Load ingredient entries
+                var ingredientEntries = await _ingredientEntryService.GetIngredientEntriesByRecipeIdAsync (recipeId);
+                foreach (var entry in ingredientEntries)
+                {
+                    var ingredient = await _ingredientEntryService.GetIngredientByIdAsync(entry.IngredientId);
+                    entry.IngredientName = ingredient?.Name ?? "Unknown";
+                    Ingredients.Add(entry);
+                }
+            }
         }
 
         [RelayCommand]

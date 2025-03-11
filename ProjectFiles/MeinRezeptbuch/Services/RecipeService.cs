@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Maui.Storage;
 using MeinRezeptbuch.Models;
+using System.Diagnostics;
 
 namespace MeinRezeptbuch.Services
 {
@@ -15,11 +16,20 @@ namespace MeinRezeptbuch.Services
 
         public RecipeService()
         {
-            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "recipes.db");
-            _database = new SQLiteAsyncConnection(dbPath);
-            _database.CreateTableAsync<Recipe>().Wait();
-            _database.CreateTableAsync<IngredientEntry>().Wait(); // Ensure IngredientEntry is created after Recipe
-            _ingredientEntryService = new IngredientEntryService();
+            try
+            {
+                string dbPath = Path.Combine(FileSystem.AppDataDirectory, "recipes.db");
+                Debug.WriteLine($"Database Path: {dbPath}");
+                _database = new SQLiteAsyncConnection(dbPath);
+                _database.CreateTableAsync<Recipe>().Wait();
+                _database.CreateTableAsync<IngredientEntry>().Wait(); // Ensure IngredientEntry is created after Recipe
+                _ingredientEntryService = new IngredientEntryService();
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
         }
 
         // Add a new recipe

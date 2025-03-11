@@ -54,5 +54,11 @@ namespace MeinRezeptbuch.Services
             return _database.ExecuteAsync("DELETE FROM IngredientEntry WHERE RecipeId = ?", recipeId);
         }
 
+        // Retrieve an ingredient entry by ID
+        public async Task<Ingredient> GetIngredientByIdAsync(int ingredientId)
+        {
+            return await _database.Table<Ingredient>().Where(i => i.ID == ingredientId).FirstOrDefaultAsync();
+        }
+
     }
 }

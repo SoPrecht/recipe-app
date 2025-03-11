@@ -14,6 +14,7 @@ namespace MeinRezeptbuch.Models
         public string Instructions { get; set; }
 
         // List of ingredients (not stored in SQLite directly, handled via RecipeIngredient relationship)
+        [Ignore]
         public List<IngredientEntry> Ingredients { get; set; } = new();
 
         public string Category { get; set; } // Optional: Example "Dessert", "Main Course"

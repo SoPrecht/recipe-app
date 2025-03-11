@@ -15,6 +15,9 @@ namespace MeinRezeptbuch.Models
         public int Amount { get; set; }
         public string? Notes { get; set; }
 
+        public string IngredientName { get; set; } // Populated in ViewModel
+
+
         public IngredientEntry() { }
 
         public IngredientEntry(int recipeId, int ingredientId, UnitEnum unit, int amount, string? notes = null)
