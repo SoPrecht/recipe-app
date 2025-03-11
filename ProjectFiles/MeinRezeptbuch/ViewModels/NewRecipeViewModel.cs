@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Mvvm.Messaging;
 using MeinRezeptbuch.Models;
 using MeinRezeptbuch.Services;
 using MeinRezeptbuch.Views;
@@ -8,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace MeinRezeptbuch.ViewModels
 {
-    public partial class NewRecipeViewModel : ObservableObject
+    public partial class NewRecipeViewModel : ObservableObject, IQueryAttributable
     {
         private readonly RecipeService _recipeService;
         private readonly IngredientEntryService _ingredientEntryService;
-        private readonly int _recipeId;
+        private int _recipeId;
+        private bool isExisting;
 
         [ObservableProperty]
         public string? name;
@@ -47,6 +49,25 @@ namespace MeinRezeptbuch.ViewModels
             }
         }
 
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            if (query.ContainsKey("recipeId") && query["recipeId"] is int id)
+            {
+                _recipeId = id;
+
+                if (_recipeId > 0)
+                {
+                    isExisting = true;
+                    LoadRecipe(_recipeId);
+                }
+                else
+                {
+                    isExisting = false;
+                    CreateNewRecipe();
+                }
+            }
+        }
+
         /// <summary>
         /// Loads an existing recipe from the database.
         /// </summary>
@@ -68,6 +89,17 @@ namespace MeinRezeptbuch.ViewModels
                     Ingredients.Add(entry);
                 }
             }
+        }
+
+        private async void CreateNewRecipe()
+        {
+            var newRecipe = new Recipe { Name = "New Recipe" };
+            await _recipeService.AddRecipeAsync(newRecipe);
+
+            _recipeId = newRecipe.Id;  // Store the generated ID
+            Name = newRecipe.Name;
+            Description = newRecipe.Description;
+            Instructions = newRecipe.Instructions;
         }
 
         [RelayCommand]
@@ -95,6 +127,9 @@ namespace MeinRezeptbuch.ViewModels
                 await _ingredientEntryService.AddIngredientEntryAsync(ingredient);
             }
 
+            // 🔹 Notify RecipesViewModel to refresh the list
+            WeakReferenceMessenger.Default.Send(new RecipeAddedMessage());
+
             await Application.Current.MainPage.DisplayAlert("Success", "Recipe saved successfully!", "OK");
             await AppShell.Current.GoToAsync(nameof(RecipesPage));
         }
@@ -113,7 +148,10 @@ namespace MeinRezeptbuch.ViewModels
         [RelayCommand]
         public async Task Cancel_Button_Clicked()
         {
-            await _recipeService.DeleteRecipeAsync(_recipeId); // Delete unsaved recipe
+            if (!isExisting)
+            {
+                await _recipeService.DeleteRecipeAsync(_recipeId); // Delete unsaved recipe
+            }
             await AppShell.Current.GoToAsync(nameof(RecipesPage));
         }
     }
