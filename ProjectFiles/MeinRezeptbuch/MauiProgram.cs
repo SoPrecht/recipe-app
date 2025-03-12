@@ -3,6 +3,8 @@ using Microsoft.Extensions.Logging;
 using MeinRezeptbuch.Services;
 using MeinRezeptbuch.Views;
 using MeinRezeptbuch.ViewModels;
+using ZXing.Net.Maui;
+using ZXing.Net.Maui.Controls;
 
 
 namespace MeinRezeptbuch
@@ -20,7 +22,8 @@ namespace MeinRezeptbuch
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                })
+                .UseBarcodeReader();
 
             // Register PreferencesService
             builder.Services.AddSingleton<PreferencesService>();
@@ -58,6 +61,11 @@ namespace MeinRezeptbuch
             builder.Services.AddSingleton<RecipeService>();
             builder.Services.AddSingleton<IngredientService>();
             builder.Services.AddSingleton<IngredientEntryService>();
+
+            // Register QR code scanner
+            builder.Services.AddSingleton<QRCodeTransferService>();
+            builder.Services.AddSingleton<QRCodeTransferViewModel>();
+            builder.Services.AddSingleton<QRCodeTransferPage>();
 
 
 

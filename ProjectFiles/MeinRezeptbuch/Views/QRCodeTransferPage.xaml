@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MeinRezeptbuch.Views.QRCodeTransferPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:MeinRezeptbuch.ViewModels"
+    xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+    x:DataType="vm:QRCodeTransferViewModel">
+
+    <VerticalStackLayout Padding="20">
+
+        <Label
+            FontAttributes="Bold"
+            FontSize="22"
+            HorizontalOptions="Center"
+            Text="QR Code Transfer" />
+
+        <!--  Export Section  -->
+        <Button Command="{Binding GenerateQRCodeCommand}" Text="Generate QR Code" />
+        <Image Source="{Binding QrCodeFilePath}" HeightRequest="500" WidthRequest="500" />
+
+        <!--  Separator  -->
+        <BoxView
+            Margin="10,20"
+            BackgroundColor="Gray"
+            HeightRequest="1" />
+
+        <!--  Import Section  -->
+        <Label
+            FontAttributes="Bold"
+            FontSize="18"
+            HorizontalOptions="Center"
+            Text="Scan QR Code to Import Recipes" />
+        <zxing:CameraBarcodeReaderView 
+            x:Name="qrScanner"
+            BarcodesDetected="OnQRCodeScanned"
+            HeightRequest="300"
+            IsDetecting="True"
+            WidthRequest="300" />
+
+    </VerticalStackLayout>
+</ContentPage>
