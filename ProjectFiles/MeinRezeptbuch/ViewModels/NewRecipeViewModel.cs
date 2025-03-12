@@ -35,7 +35,7 @@ namespace MeinRezeptbuch.ViewModels
             ingredients = new ObservableCollection<IngredientEntry>();
         }
 
-        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        public async void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             //safety check to prevent multiple calls
             if (_isQueryApplied) return;
@@ -45,19 +45,19 @@ namespace MeinRezeptbuch.ViewModels
             {
                 _recipeId = id;
                 isExisting = true;
-                LoadRecipe(_recipeId);
+                await LoadRecipe(_recipeId);
             }
             else
             {
                 isExisting = false;
-                CreateNewRecipe();
+                await CreateNewRecipe();
             }
         }
 
         /// <summary>
         /// Loads an existing recipe from the database.
         /// </summary>
-        private async void LoadRecipe(int recipeId)
+        private async Task LoadRecipe(int recipeId)
         {
             var recipe = await _recipeService.GetRecipeByIdAsync(recipeId);
             if (recipe != null)
@@ -73,8 +73,7 @@ namespace MeinRezeptbuch.ViewModels
             }
         }
 
-        // ex async
-        private async void CreateNewRecipe()
+        private async Task CreateNewRecipe()
         {
             _recipe = new Recipe { Name = "New Recipe" };
             await _recipeService.AddRecipeAsync(_recipe);
@@ -82,6 +81,14 @@ namespace MeinRezeptbuch.ViewModels
             Name = _recipe.Name;
             Description = _recipe.Description;
             Instructions = _recipe.Instructions;
+        }
+
+        private async Task RefreshIngredients()
+        {
+            var ingredientEntries = await _ingredientEntryService.GetIngredientEntriesByRecipeIdAsync(_recipeId);
+
+            Ingredients = new ObservableCollection<IngredientEntry>(ingredientEntries);
+            OnPropertyChanged(nameof(Ingredients));
         }
 
         [RelayCommand]
@@ -111,18 +118,11 @@ namespace MeinRezeptbuch.ViewModels
             if (popup != null)
             {
                 var viewModel = popup.BindingContext as IngredientEntryViewModel;
-                if (viewModel != null)
-                {
-                    viewModel.SetRecipeId(_recipeId);
-                }
-                var entry = await AppShell.Current.ShowPopupAsync(popup);
-                if (entry != null)
-                {
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        Ingredients.Add((IngredientEntry)entry); // Ensure UI updates immediately
-                    });
-                }
+                viewModel?.SetRecipeId(_recipeId);
+                await AppShell.Current.ShowPopupAsync(popup);
+
+                await RefreshIngredients();
+                
             }
         }
 
