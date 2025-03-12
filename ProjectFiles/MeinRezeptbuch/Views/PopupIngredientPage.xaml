@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+    x:Class="MeinRezeptbuch.Views.PopupIngredientPage"
+    xmlns:vm="clr-namespace:MeinRezeptbuch.ViewModels"
+    x:DataType="vm:IngredientViewModel">
+
+    <VerticalStackLayout Padding="20" BackgroundColor="White" Margin="40" VerticalOptions="Center">
+        <Label Text="Ingredient Details" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+
+        <Entry Placeholder="Ingredient Name" Text="{Binding IngredientName}" />
+
+        <!-- Corrected Picker Binding -->
+        <Picker Title="Ingredient Type" 
+                ItemsSource="{Binding IngredientTypes}" 
+                SelectedItem="{Binding SelectedIngredientType}" />
+
+        <HorizontalStackLayout Spacing="10">
+            <Button Text="Save" Command="{Binding SaveIngredientCommand}" />
+            <Button Text="Cancel" Command="{Binding ClosePopupCommand}" BackgroundColor="Red" TextColor="White" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</mct:Popup>

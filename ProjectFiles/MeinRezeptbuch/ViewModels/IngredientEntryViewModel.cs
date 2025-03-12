@@ -109,6 +109,12 @@ namespace MeinRezeptbuch.ViewModels
         [RelayCommand]
         public void ClosePopup()
         {
+            IngredientName = string.Empty;
+            SelectedIngredientType = default;
+            Unit = default;
+            Amount = 0;
+            Notes = string.Empty;
+
             _popup?.Close();
         }
 

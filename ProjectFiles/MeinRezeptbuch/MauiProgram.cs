@@ -47,8 +47,9 @@ namespace MeinRezeptbuch
 
             builder.Services.AddSingleton<IngredientsPage>();
             builder.Services.AddSingleton<IngredientViewModel>();
+            builder.Services.AddTransient<PopupIngredientPage>();
 
-            builder.Services.AddSingleton<AddIngredientEntryPopUpPage>();
+            builder.Services.AddTransient<AddIngredientEntryPopUpPage>();
             builder.Services.AddTransient<IngredientEntryViewModel>();
             //builder.Services.AddSingleton<AddIngredientEntryPopUpPage>();
             //builder.Services.AddSingleton<AddIngredientEntryPopUpPage>();

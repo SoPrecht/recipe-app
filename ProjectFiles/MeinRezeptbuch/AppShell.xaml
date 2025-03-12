@@ -14,6 +14,9 @@
         <Tab Title="Recipes" Icon="recipes.png">
             <ShellContent ContentTemplate="{DataTemplate views:RecipesPage}" />
         </Tab>
+        <Tab Title="Ingredients" Icon="ingredients.png">
+            <ShellContent ContentTemplate="{DataTemplate views:IngredientsPage}" />
+        </Tab>
         <Tab Title="Shopping List" Icon="shoppinglist.png">
             <ShellContent ContentTemplate="{DataTemplate views:ShoppinglistPage}" />
         </Tab>

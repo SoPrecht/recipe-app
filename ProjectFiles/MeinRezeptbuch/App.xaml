@@ -13,6 +13,20 @@
             </ResourceDictionary.MergedDictionaries>
 
             <converters:AmountUnitConverter x:Key="AmountUnitConverter" />
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+            <Style TargetType="Editor">
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

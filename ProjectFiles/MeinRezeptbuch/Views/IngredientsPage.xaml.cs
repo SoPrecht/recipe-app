@@ -2,11 +2,11 @@ using MeinRezeptbuch.ViewModels;
 
 namespace MeinRezeptbuch.Views;
 
-public partial class IngredientsPage : ContentPage
-{
-	public IngredientsPage(IngredientViewModel vm)
+	public partial class IngredientsPage : ContentPage
 	{
-		InitializeComponent();
-        BindingContext = vm;
-    }
-}
+		public IngredientsPage(IngredientViewModel vm)
+		{
+			InitializeComponent();
+			BindingContext = vm;
+		}
+	}

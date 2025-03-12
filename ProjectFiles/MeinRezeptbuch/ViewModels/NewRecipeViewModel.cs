@@ -114,7 +114,7 @@ namespace MeinRezeptbuch.ViewModels
                 {
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
-                        Ingredients.Add((IngredientEntry)entry); // ✅ Ensure UI updates immediately
+                        Ingredients.Add((IngredientEntry)entry); // Ensure UI updates immediately
                     });
                 }
             }

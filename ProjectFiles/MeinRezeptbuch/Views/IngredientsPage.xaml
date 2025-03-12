@@ -4,44 +4,51 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:MeinRezeptbuch.ViewModels"
+    xmlns:m="clr-namespace:MeinRezeptbuch.Models"
     xmlns:services="clr-namespace:MeinRezeptbuch.Services"
     x:DataType="vm:IngredientViewModel">
 
     <VerticalStackLayout Padding="20">
 
-        <Entry Placeholder="Zutat Name" Text="{Binding Name}" />
-        <Entry Placeholder="Beschreibung" Text="{Binding Description}" />
+        <!-- Title Label -->
+        <Label Text="Ingredients" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
 
-        <Picker
-            Title="Kategorie"
-            ItemsSource="{Binding Source={x:Static services:EnumHelper.IngredientTypes}}"
-            SelectedItem="{Binding Type}" />
+        <!-- Add New Ingredient Button -->
+        <Button Text="Add Ingredient" Command="{Binding OpenIngredientPopupCommand}" />
 
-        <Button Command="{Binding AddIngredientAsyncCommand}" Text="Hinzufügen" />
+        <!-- Scrollable List of Ingredients -->
+        <ScrollView>
+            <CollectionView ItemsSource="{Binding Ingredients}" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Delete" BackgroundColor="Red" Command="{Binding DeleteIngredientCommand}" CommandParameter="{Binding}" />
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <Border Margin="5" Padding="10" BackgroundColor="{StaticResource BoxType1}" Stroke="{StaticResource Stroke1}" StrokeThickness="2">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
 
-        <CollectionView ItemsSource="{Binding Ingredients}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <SwipeView>
-                        <SwipeView.LeftItems>
-                            <SwipeItems>
-                                <SwipeItem
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:IngredientViewModel}}, Path=DeleteIngredientAsyncCommand}"
-                                    CommandParameter="{Binding}"
-                                    Text="Löschen" />
-                            </SwipeItems>
-                        </SwipeView.LeftItems>
-                        <Grid Padding="10">
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="18"
-                                Text="{Binding Name}" />
-                            <Label FontSize="14" Text="{Binding Description}" />
-                        </Grid>
-                    </SwipeView>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-
+                                    <!-- Ingredient Details -->
+                                    <VerticalStackLayout Grid.Column="0" x:DataType="m:Ingredient">
+                                        <Label FontSize="18" Text="{Binding Name}" TextColor="Black" VerticalOptions="Center" />
+                                        <Label FontSize="14" Text="{Binding Type}" TextColor="Gray" VerticalOptions="Center" />
+                                    </VerticalStackLayout>
+                                    
+                                </Grid>
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="15,15,15,15" />
+                                </Border.StrokeShape>
+                            </Border>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
     </VerticalStackLayout>
 </ContentPage>
