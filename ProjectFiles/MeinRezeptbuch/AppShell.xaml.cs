@@ -15,6 +15,7 @@ namespace MeinRezeptbuch
             Routing.RegisterRoute(nameof(WeekPlanerPage), typeof(WeekPlanerPage));
 
             Routing.RegisterRoute(nameof(NewRecipePage), typeof(NewRecipePage));
+            Routing.RegisterRoute(nameof(IngredientsPage), typeof(IngredientsPage));
         }
     }
 }

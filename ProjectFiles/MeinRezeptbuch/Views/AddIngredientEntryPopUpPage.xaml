@@ -4,7 +4,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
-    xmlns:serv="clr-namespace:MeinRezeptbuch.Services">
+    xmlns:serv="clr-namespace:MeinRezeptbuch.Services"
+    xmlns:vm="clr-namespace:MeinRezeptbuch.ViewModels"
+    x:DataType="vm:IngredientEntryViewModel">
+
     <VerticalStackLayout MinimumWidthRequest="300">
 
         <Label
@@ -12,26 +15,33 @@
             Text="Add Ingredient"
             VerticalOptions="Center" />
 
-        <Entry x:Name="ingredientNameEntry" Placeholder="Ingredient Name" />
+        <Entry
+            x:Name="ingredientNameEntry"
+            Placeholder="Ingredient Name"
+            Text="{Binding IngredientName}" />
 
         <Picker
             x:Name="ingredientTypePicker"
             Title="Select Ingredient Type"
-            ItemsSource="{Binding Source={x:Static serv:EnumHelper.IngredientTypes}}" />
+            ItemsSource="{Binding IngredientTypes}"
+            SelectedItem="{Binding SelectedIngredientType}" />
 
         <Picker
             x:Name="unitPicker"
             Title="Select Unit"
-            ItemsSource="{Binding Source={x:Static serv:EnumHelper.UnitEnums}}" />
+            ItemsSource="{Binding Units}"
+            SelectedItem="{Binding Unit}" />
 
         <Entry
             x:Name="amountEntry"
             Keyboard="Numeric"
-            Placeholder="Amount" />
+            Placeholder="Amount"
+            Text="{Binding Amount}" />
 
-        <Entry x:Name="notesEntry" Placeholder="Notes (Optional)" />
-
-
+        <Entry
+            x:Name="notesEntry"
+            Placeholder="Notes (Optional)"
+            Text="{Binding Notes}" />
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -40,12 +50,12 @@
             </Grid.ColumnDefinitions>
             <Button
                 Grid.Column="0"
-                Clicked="Cancel_Button_Clicked"
+                Command="{Binding ClosePopupCommand}"
                 Text="Close" />
 
             <Button
                 Grid.Column="1"
-                Clicked="Save_Button_Clicked"
+                Command="{Binding AddIngredientEntryCommand}"
                 Text="Create" />
         </Grid>
 

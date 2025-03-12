@@ -3,12 +3,15 @@ using Microsoft.Extensions.Logging;
 using MeinRezeptbuch.Services;
 using MeinRezeptbuch.Views;
 using MeinRezeptbuch.ViewModels;
+using ZXing.Net.Maui;
+using ZXing.Net.Maui.Controls;
 
 
 namespace MeinRezeptbuch
 {
     public static class MauiProgram
     {
+        private static IServiceProvider _services;
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
@@ -19,7 +22,8 @@ namespace MeinRezeptbuch
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                })
+                .UseBarcodeReader();
 
             // Register PreferencesService
             builder.Services.AddSingleton<PreferencesService>();
@@ -41,18 +45,56 @@ namespace MeinRezeptbuch
             builder.Services.AddSingleton<WeekPlanerPage>();
             builder.Services.AddSingleton<WeekPlanerViewModel>();
 
-            builder.Services.AddSingleton<NewRecipePage>();
-            builder.Services.AddSingleton<NewRecipeViewModel>();
+            builder.Services.AddTransient<NewRecipePage>();
+            builder.Services.AddTransient<NewRecipeViewModel>();
 
-            builder.Services.AddSingleton<AddIngredientEntryPopUpPage>();
+            builder.Services.AddSingleton<IngredientsPage>();
+            builder.Services.AddSingleton<IngredientViewModel>();
+            builder.Services.AddTransient<PopupIngredientPage>();
+
+            builder.Services.AddTransient<AddIngredientEntryPopUpPage>();
+            builder.Services.AddTransient<IngredientEntryViewModel>();
             //builder.Services.AddSingleton<AddIngredientEntryPopUpPage>();
             //builder.Services.AddSingleton<AddIngredientEntryPopUpPage>();
+
+            // Register Services as Singleton
+            builder.Services.AddSingleton<RecipeService>();
+            builder.Services.AddSingleton<IngredientService>();
+            builder.Services.AddSingleton<IngredientEntryService>();
+
+            // Register QR code scanner
+            builder.Services.AddSingleton<QRCodeTransferService>();
+            builder.Services.AddSingleton<QRCodeTransferViewModel>();
+            builder.Services.AddSingleton<QRCodeTransferPage>();
+
+
 
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
 
-            return builder.Build();
+            var app = builder.Build();
+            _services = app.Services;
+
+            return app;
+        }
+
+        // Method to get services globally
+        public static T GetService<T>() where T : class
+        {
+            if (_services == null)
+            {
+                throw new InvalidOperationException("Dependency Injection container is not initialized.");
+            }
+
+            var service = _services.GetService<T>();
+
+            if (service == null)
+            {
+                throw new InvalidOperationException($"Service {typeof(T).Name} is not registered in the DI container.");
+            }
+
+            return service;
         }
     }
 }

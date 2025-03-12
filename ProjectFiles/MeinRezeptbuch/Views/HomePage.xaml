@@ -11,7 +11,7 @@
         <!--  Header  -->
         <Grid ColumnDefinitions="0.8*,0.2*" RowDefinitions="Auto">
             <!--  Overview  -->
-            
+
             <Label
                 Grid.Row="0"
                 Grid.Column="0"
@@ -90,96 +90,96 @@
                     ColumnDefinitions="0.09*,0.25*,0.09*,0.25*,0.09*,0.25*"
                     RowDefinitions="Auto,Auto,Auto"
                     RowSpacing="0">
-                    <BoxView 
+                    <BoxView
                         Grid.Row="0"
                         Grid.Column="1"
-                        BackgroundColor="Gray" 
-                        Opacity="0.5"/>
-                    <BoxView 
+                        BackgroundColor="Gray"
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="0"
                         Grid.Column="2"
                         BackgroundColor="Gray"
-                        Opacity="0.5"/>
-                    <BoxView 
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="0"
                         Grid.Column="3"
-                        BackgroundColor="Gray" 
-                        Opacity="0.5"/>
-                    <BoxView 
+                        BackgroundColor="Gray"
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="0"
                         Grid.Column="0"
                         BackgroundColor="Gray"
-                        Opacity="0.5"/>
-                    <BoxView 
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="0"
                         Grid.Column="4"
                         BackgroundColor="Blue"
-                        Opacity="0.5"/>
-                    <BoxView 
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="0"
                         Grid.Column="5"
                         BackgroundColor="blue"
-                        Opacity="0.5"/>
-                    <BoxView 
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="1"
                         Grid.Column="0"
                         BackgroundColor="blue"
-                        Opacity="0.5"/>
-                    <BoxView 
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="1"
                         Grid.Column="1"
                         BackgroundColor="blue"
-                        Opacity="0.5"/>
-                    <BoxView 
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="1"
                         Grid.Column="2"
                         BackgroundColor="blue"
-                        Opacity="0.5"/>
-                    <BoxView 
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="1"
                         Grid.Column="3"
                         BackgroundColor="blue"
-                        Opacity="0.5"/>
-                    <BoxView 
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="1"
                         Grid.Column="4"
                         BackgroundColor="Green"
-                        Opacity="0.5"/>
-                    <BoxView 
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="1"
                         Grid.Column="5"
                         BackgroundColor="Green"
-                        Opacity="0.5"/>
-                    <BoxView 
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="2"
                         Grid.Column="0"
                         BackgroundColor="Green"
-                        Opacity="0.5"/>
-                    <BoxView 
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="2"
                         Grid.Column="1"
                         BackgroundColor="Green"
-                        Opacity="0.5"/>
-                    <BoxView 
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="2"
                         Grid.Column="2"
                         BackgroundColor="Green"
-                        Opacity="0.5"/>
-                    <BoxView 
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="2"
                         Grid.Column="3"
                         BackgroundColor="Green"
-                        Opacity="0.5"/>
-                    <BoxView 
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="2"
                         Grid.Column="4"
                         BackgroundColor="Gray"
-                        Opacity="0.5"/>
-                    <BoxView 
+                        Opacity="0.5" />
+                    <BoxView
                         Grid.Row="2"
                         Grid.Column="5"
                         BackgroundColor="Gray"
-                        Opacity="0.5"/>
+                        Opacity="0.5" />
                     <!--  Lable 1  -->
                     <Label
                         Grid.Row="0"
@@ -207,10 +207,10 @@
                         </Border.StrokeShape>
                         <Border.Shadow>
                             <Shadow
-                            Brush="Black"
-                            Opacity="0.6"
-                            Radius="60"
-                            Offset="5,20" />
+                                Brush="Black"
+                                Opacity="0.6"
+                                Radius="60"
+                                Offset="5,20" />
                         </Border.Shadow>
                         <Label
                             HorizontalOptions="Center"
@@ -243,10 +243,10 @@
                         </Border.StrokeShape>
                         <Border.Shadow>
                             <Shadow
-                            Brush="Black"
-                            Opacity="0.6"
-                            Radius="60"
-                            Offset="5,20" />
+                                Brush="Black"
+                                Opacity="0.6"
+                                Radius="60"
+                                Offset="5,20" />
                         </Border.Shadow>
                         <Label
                             HorizontalOptions="Center"
@@ -279,10 +279,10 @@
                         </Border.StrokeShape>
                         <Border.Shadow>
                             <Shadow
-                            Brush="Black"
-                            Opacity="0.6"
-                            Radius="60"
-                            Offset="5,20" />
+                                Brush="Black"
+                                Opacity="0.6"
+                                Radius="60"
+                                Offset="5,20" />
                         </Border.Shadow>
                         <Label
                             HorizontalOptions="Center"
@@ -316,10 +316,10 @@
                         </Border.StrokeShape>
                         <Border.Shadow>
                             <Shadow
-                            Brush="Black"
-                            Opacity="0.6"
-                            Radius="60"
-                            Offset="5,20" />
+                                Brush="Black"
+                                Opacity="0.6"
+                                Radius="60"
+                                Offset="5,20" />
                         </Border.Shadow>
                         <Label
                             HorizontalOptions="Center"
@@ -352,10 +352,10 @@
                         </Border.StrokeShape>
                         <Border.Shadow>
                             <Shadow
-                            Brush="Black"
-                            Opacity="0.6"
-                            Radius="60"
-                            Offset="5,20" />
+                                Brush="Black"
+                                Opacity="0.6"
+                                Radius="60"
+                                Offset="5,20" />
                         </Border.Shadow>
                         <Label
                             HorizontalOptions="Center"
@@ -388,10 +388,10 @@
                         </Border.StrokeShape>
                         <Border.Shadow>
                             <Shadow
-                            Brush="Black"
-                            Opacity="0.6"
-                            Radius="60"
-                            Offset="5,20" />
+                                Brush="Black"
+                                Opacity="0.6"
+                                Radius="60"
+                                Offset="5,20" />
                         </Border.Shadow>
                         <Label
                             HorizontalOptions="Center"
@@ -426,10 +426,10 @@
                         </Border.StrokeShape>
                         <Border.Shadow>
                             <Shadow
-                            Brush="Black"
-                            Opacity="0.6"
-                            Radius="60"
-                            Offset="5,20" />
+                                Brush="Black"
+                                Opacity="0.6"
+                                Radius="60"
+                                Offset="5,20" />
                         </Border.Shadow>
                         <Label
                             HorizontalOptions="Center"
@@ -462,10 +462,10 @@
                         </Border.StrokeShape>
                         <Border.Shadow>
                             <Shadow
-                            Brush="Black"
-                            Opacity="0.6"
-                            Radius="60"
-                            Offset="5,20" />
+                                Brush="Black"
+                                Opacity="0.6"
+                                Radius="60"
+                                Offset="5,20" />
                         </Border.Shadow>
                         <Label
                             HorizontalOptions="Center"
@@ -498,10 +498,10 @@
                         </Border.StrokeShape>
                         <Border.Shadow>
                             <Shadow
-                            Brush="Black"
-                            Opacity="0.6"
-                            Radius="60"
-                            Offset="5,20" />
+                                Brush="Black"
+                                Opacity="0.6"
+                                Radius="60"
+                                Offset="5,20" />
                         </Border.Shadow>
                         <Label
                             HorizontalOptions="Center"

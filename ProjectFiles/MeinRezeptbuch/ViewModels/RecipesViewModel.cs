@@ -1,34 +1,76 @@
 ﻿using MeinRezeptbuch.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using MeinRezeptbuch.Services;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using MeinRezeptbuch.Models;
 
 namespace MeinRezeptbuch.ViewModels
 {
     public partial class RecipesViewModel : ObservableObject
     {
+        private readonly RecipeService _recipeService;
         [ObservableProperty]
-        private List<String> recipes;
-
-        public RecipesViewModel() 
+        private ObservableCollection<Recipe> recipes;
+        public RecipesViewModel(RecipeService recipeService)
         {
-            recipes = new List<String>();
-            recipes.Add("Pancake");
-            recipes.Add("Potato");
-            recipes.Add("gure");
-            recipes.Add("qwert");
-            recipes.Add("cvbnmnmb");
-            recipes.Add("kjsefbdffdf42234");
+            _recipeService = recipeService;
+            recipes = new ObservableCollection<Recipe>();
+            Task.Run(async () => await RefreshRecipesAsync());
 
-
+            // Listen for new recipes being added
+            WeakReferenceMessenger.Default.Register<RecipeAddedMessage>(this, async (r, m) =>
+            {
+                await RefreshRecipesAsync();
+            });
         }
 
-        [RelayCommand]
-        public async Task OpenNewRecipe()
+        /// <summary>
+        /// Loads recipes from the database asynchronously and updates the observable collection
+        /// </summary>
+        public async Task RefreshRecipesAsync()
         {
-            await Shell.Current.GoToAsync(nameof(NewRecipePage));
+            var recipeList = await _recipeService.GetAllRecipesAsync();
+            Recipes.Clear();
+            foreach (var recipe in recipeList)
+            {
+                Recipes.Add(recipe);
+            }
+        }
+
+        /// <summary>
+        /// Command to open the NewRecipePage, optionally passing an existing recipe ID for editing
+        /// </summary>
+        [RelayCommand]
+        public async Task OpenNewRecipeAsnyc(int? recipeId = null)
+        {
+            if (recipeId.HasValue)
+            {
+                var navigationParameter = new Dictionary<string, object>
+                    {
+                        { "recipeId", recipeId }
+                    };
+                await Shell.Current.GoToAsync(nameof(NewRecipePage), navigationParameter);
+            }
+            else
+            {
+                await Shell.Current.GoToAsync(nameof(NewRecipePage));
+            }
+        }
+
+        /// <summary>
+        /// Command to delete a recipe
+        /// </summary>
+        [RelayCommand]
+        public async Task DeleteRecipe(Recipe recipe)
+        {
+            if (recipe != null)
+            {
+                await _recipeService.DeleteRecipeAsync(recipe);
+                Recipes.Remove(recipe);
+            }
         }
     }
 }

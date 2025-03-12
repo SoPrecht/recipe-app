@@ -1,34 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SQLite;
 using MeinRezeptbuch.Services;
 
 namespace MeinRezeptbuch.Models
 {
     public class IngredientEntry
     {
-        public Ingredient ingredient;
-        public UnitEnum unit;
-        public int amount;
-        public string? notes;
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        
+        public int RecipeId { get; set; } // Foreign key reference to Recipe
+
+        public int IngredientId { get; set; } // Foreign key reference to Ingredient
+        public UnitEnum Unit { get; set; }
+        public int Amount { get; set; }
+        public string? Notes { get; set; }
+
+        public string IngredientName { get; set; } // Populated in ViewModel
 
 
-        public IngredientEntry(Ingredient ing, UnitEnum u, int a, string? n = null)
+        public IngredientEntry() { }
+
+        public IngredientEntry(int recipeId, int ingredientId, string ingredientName, UnitEnum unit, int amount, string? notes = null)
         {
-            ingredient = ing;
-            unit = u;
-            amount = a;
-            notes = n;
-        }
-        public IngredientEntry(string name, UnitEnum u, int a, string? n = null)
-        {
-            ingredient = new Ingredient(name, IngredientType.Undefined);
-            unit = u;
-            amount = a;
-            notes = n;
+            RecipeId = recipeId;
+            IngredientId = ingredientId;
+            IngredientName = ingredientName;
+            Unit = unit;
+            Amount = amount;
+            Notes = notes;
         }
     }
-
 }

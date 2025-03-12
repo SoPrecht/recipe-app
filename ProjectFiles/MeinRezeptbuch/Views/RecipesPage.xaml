@@ -3,54 +3,79 @@
     x:Class="MeinRezeptbuch.Views.RecipesPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:m="clr-namespace:MeinRezeptbuch.Models"
     xmlns:vm="clr-namespace:MeinRezeptbuch.ViewModels"
     x:DataType="vm:RecipesViewModel"
     BackgroundColor="{StaticResource Background}">
 
     <VerticalStackLayout Margin="5" Spacing="10">
         <!--  Header  -->
-        <Grid RowDefinitions="Auto" ColumnDefinitions="*, Auto">
-            <Label Grid.Row="0"
-                   Grid.Column="0"
-                    Text="Meine Rezepte" 
-                   FontSize="28" 
-                   FontAttributes="Bold" 
-                   HorizontalTextAlignment="Start" 
-                   Margin="20,5,0,0"/>
-            <Button Grid.Row="0"
-                    Grid.Column="1"
-                    HorizontalOptions="EndAndExpand"
-                    Margin="0,5,15,0"
-                    Text="New Recipe"
-                    Command="{Binding OpenNewRecipeCommand}"/>
+        <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto">
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="20,5,0,0"
+                FontAttributes="Bold"
+                FontSize="28"
+                HorizontalTextAlignment="Start"
+                Text="Meine Rezepte" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="0,5,15,0"
+                Command="{Binding OpenNewRecipeAsnycCommand}"
+                HorizontalOptions="EndAndExpand"
+                Text="New Recipe" />
         </Grid>
 
         <ScrollView>
-            <VerticalStackLayout Spacing="10" Padding="10">
-                <!-- Bindable Layout for Recipes -->
-                <CollectionView ItemsSource="{Binding Recipes}" SelectionMode="None">
+            <VerticalStackLayout Padding="10" Spacing="10">
+                <!--  Bindable Layout for Recipes  -->
+                <CollectionView ItemsSource="{Binding Recipes}" SelectionMode="Single">
                     <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="m:Recipe">
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem
+                                            BackgroundColor="Red"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecipesViewModel}}, Path=DeleteRecipeCommand}"
+                                            CommandParameter="{Binding}"
+                                            Text="Delete" />
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Border
+                                    Margin="5"
+                                    Padding="10"
+                                    BackgroundColor="{StaticResource BoxType1}"
+                                    Stroke="{StaticResource Stroke1}"
+                                    StrokeThickness="2">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
 
-                        <DataTemplate>
-                            <Border BackgroundColor="{StaticResource BoxType1}"
-                                Stroke="{StaticResource Stroke1}"
-                                StrokeThickness="2"
-                                Padding="10"
-                                Margin="5">
-
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="15,15,15,15" />
-                                </Border.StrokeShape>
-
-                                <Label Text="{Binding .}" 
-                                   FontAttributes="Bold"
-                                   FontSize="20"
-                                   TextColor="Black"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center" />
-                            </Border>
+                                        <!--  Recipe Name  -->
+                                        <Label
+                                            Grid.Column="0"
+                                            FontSize="18"
+                                            Text="{Binding Name}"
+                                            TextColor="Black"
+                                            VerticalOptions="Center" />
+                                        <!--  Open Recipe Button  -->
+                                        <Button
+                                            Grid.Column="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecipesViewModel}}, Path=OpenNewRecipeAsnycCommand}"
+                                            CommandParameter="{Binding Id}"
+                                            Text="View" />
+                                    </Grid>
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="15,15,15,15" />
+                                    </Border.StrokeShape>
+                                </Border>
+                            </SwipeView>
                         </DataTemplate>
-                        
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </VerticalStackLayout>

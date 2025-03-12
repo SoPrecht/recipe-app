@@ -10,29 +10,10 @@ namespace MeinRezeptbuch.Views;
 [XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class AddIngredientEntryPopUpPage : Popup
 {
-    private readonly NewRecipeViewModel vm;
-	public AddIngredientEntryPopUpPage(NewRecipeViewModel vm)
-	{
-		InitializeComponent();
-        this.vm = vm;
-
-	}
-
-    private void Save_Button_Clicked(object sender, EventArgs e)
+    public AddIngredientEntryPopUpPage(IngredientEntryViewModel vm)
     {
-        IngredientEntry entry = new IngredientEntry(
-            ingredientNameEntry.Text,
-            (UnitEnum)unitPicker.SelectedItem,
-            ingredientTypePicker.SelectedIndex,
-            amountEntry.Text
-            );
-
-        Close(entry);
+        InitializeComponent();
+        BindingContext = vm;
+        vm.SetPopupReference(this);
     }
-
-    private void Cancel_Button_Clicked(object sender, EventArgs e)
-    {
-        Close();
-    }
-
 }
