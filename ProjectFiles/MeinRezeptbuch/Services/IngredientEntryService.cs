@@ -4,6 +4,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Maui.Storage;
+using System.Diagnostics;
 
 namespace MeinRezeptbuch.Services
 {
@@ -23,52 +24,60 @@ namespace MeinRezeptbuch.Services
             }
             catch (Exception ex)
             {
-                // Log or handle the exception
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                Debug.WriteLine($"An error occurred: {ex.Message}");
             }
         }
 
         // Add a new ingredient entry
-        public Task<int> AddIngredientEntryAsync(IngredientEntry ingredientEntry)
+        public async Task<int> AddIngredientEntryAsync(IngredientEntry ingredientEntry)
         {
-            return _database.InsertAsync(ingredientEntry);
+            Debug.WriteLine($"Adding ingredient entry: RecipeId={ingredientEntry.RecipeId}, IngredientId={ingredientEntry.IngredientId}");
+            return await _database.InsertAsync(ingredientEntry);
         }
 
         // Retrieve all ingredient entries
-        public Task<List<IngredientEntry>> GetAllIngredientEntriesAsync()
+        public async Task<List<IngredientEntry>> GetAllIngredientEntriesAsync()
         {
-            return _database.Table<IngredientEntry>().ToListAsync();
+            var entries = await _database.Table<IngredientEntry>().ToListAsync();
+            Debug.WriteLine($"Total ingredient entries retrieved: {entries.Count}");
+            return entries;
         }
 
         // Update an ingredient entry
-        public Task<int> UpdateIngredientEntryAsync(IngredientEntry ingredientEntry)
+        public async Task<int> UpdateIngredientEntryAsync(IngredientEntry ingredientEntry)
         {
-            return _database.UpdateAsync(ingredientEntry);
+            Debug.WriteLine($"Updating ingredient entry: {ingredientEntry.Id}");
+            return await _database.UpdateAsync(ingredientEntry);
         }
 
         // Delete an ingredient entry
-        public Task<int> DeleteIngredientEntryAsync(IngredientEntry ingredientEntry)
+        public async Task<int> DeleteIngredientEntryAsync(IngredientEntry ingredientEntry)
         {
-            return _database.DeleteAsync(ingredientEntry);
+            Debug.WriteLine($"Deleting ingredient entry: {ingredientEntry.Id}");
+            return await _database.DeleteAsync(ingredientEntry);
         }
 
         // Retrieve ingredient entries for a specific recipe
-        public Task<List<IngredientEntry>> GetIngredientEntriesByRecipeIdAsync(int recipeId)
+        public async Task<List<IngredientEntry>> GetIngredientEntriesByRecipeIdAsync(int recipeId)
         {
-            return _database.Table<IngredientEntry>().Where(i => i.RecipeId == recipeId).ToListAsync();
+            Debug.WriteLine($"Fetching ingredient entries for RecipeId={recipeId}");
+            var entries = await _database.Table<IngredientEntry>().Where(i => i.RecipeId == recipeId).ToListAsync();
+            Debug.WriteLine($"Ingredient entries found: {entries.Count}");
+            return entries;
         }
 
         // Delete all ingredient entries for a specific recipe
-        public Task<int> DeleteIngredientEntriesByRecipeIdAsync(int recipeId)
+        public async Task<int> DeleteIngredientEntriesByRecipeIdAsync(int recipeId)
         {
-            return _database.ExecuteAsync("DELETE FROM IngredientEntry WHERE RecipeId = ?", recipeId);
+            Debug.WriteLine($"Deleting all ingredient entries for RecipeId={recipeId}");
+            return await _database.ExecuteAsync("DELETE FROM IngredientEntry WHERE RecipeId = ?", recipeId);
         }
 
         // Retrieve an ingredient entry by ID
         public async Task<Ingredient> GetIngredientByIdAsync(int ingredientId)
         {
+            Debug.WriteLine($"Fetching ingredient by ID={ingredientId}");
             return await _ingredientService.GetIngredientByIdAsync(ingredientId);
         }
-
     }
 }

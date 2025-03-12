@@ -5,6 +5,7 @@ using MeinRezeptbuch.Models;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using CommunityToolkit.Maui.Views;
+using System.Diagnostics;
 
 
 namespace MeinRezeptbuch.ViewModels
@@ -35,14 +36,14 @@ namespace MeinRezeptbuch.ViewModels
         [ObservableProperty]
         public string? notes;
 
-        public int RecipeId { get; private set; }
+        private int _recipeId;
 
 
-        public IngredientEntryViewModel(IngredientEntryService ingredientEntryService, IngredientService ingredientService,int? recipeId = null)
+        public IngredientEntryViewModel(IngredientEntryService ingredientEntryService, IngredientService ingredientService, int? recipeId = null)
         {
             _ingredientService = ingredientService;
             _ingredientEntryService = ingredientEntryService;
-            RecipeId = recipeId ?? 0;
+            _recipeId = recipeId ?? 0;
             LoadIngredientEntries();
         }
 
@@ -53,10 +54,21 @@ namespace MeinRezeptbuch.ViewModels
 
         private async void LoadIngredientEntries()
         {
-            var entries = await _ingredientEntryService.GetAllIngredientEntriesAsync();
+            Debug.WriteLine("LoadIngredientEntries is beeing called!!!!!");
             IngredientEntries.Clear();
-            foreach (var entry in entries)
+
+            var ingredientEntries = await _ingredientEntryService.GetIngredientEntriesByRecipeIdAsync(_recipeId);
+
+            foreach (var entry in ingredientEntries)
             {
+                Debug.WriteLine($"Processing entry with ID: {entry.Id}, IngredientId: {entry.IngredientId}");
+
+                var ingredient = await _ingredientService.GetIngredientByIdAsync(entry.IngredientId);
+                if (ingredient != null)
+                {
+                    entry.IngredientName = ingredient.Name;
+                }
+
                 IngredientEntries.Add(entry);
             }
         }
@@ -74,22 +86,35 @@ namespace MeinRezeptbuch.ViewModels
             }
 
             // Create new ingredient entry
-            var ingredientEntry = new IngredientEntry(RecipeId , ingredient.ID, ingredient.Name, Unit, Amount, Notes);
+            var ingredientEntry = new IngredientEntry(_recipeId, ingredient.ID, ingredient.Name, Unit, Amount, Notes);
             await _ingredientEntryService.AddIngredientEntryAsync(ingredientEntry);
-            LoadIngredientEntries();
+
+            MainThread.BeginInvokeOnMainThread(() => {
+                IngredientEntries.Add(ingredientEntry);
+            });
+
+            ClosePopup();
         }
 
         [RelayCommand]
         public async Task DeleteIngredientEntryAsync(IngredientEntry ingredientEntry)
         {
             await _ingredientEntryService.DeleteIngredientEntryAsync(ingredientEntry);
-            LoadIngredientEntries();
+
+            MainThread.BeginInvokeOnMainThread(() => {
+                IngredientEntries.Remove(ingredientEntry);
+            });
         }
 
         [RelayCommand]
         public void ClosePopup()
         {
-            _popup.Close();
+            _popup?.Close();
+        }
+
+        public void SetRecipeId(int recipeId)
+        {
+            _recipeId = recipeId;
         }
     }
 }

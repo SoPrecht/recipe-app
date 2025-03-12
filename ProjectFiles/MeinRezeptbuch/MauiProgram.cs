@@ -9,6 +9,7 @@ namespace MeinRezeptbuch
 {
     public static class MauiProgram
     {
+        private static IServiceProvider _services;
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
@@ -63,7 +64,28 @@ namespace MeinRezeptbuch
             builder.Logging.AddDebug();
 #endif
 
-            return builder.Build();
+            var app = builder.Build();
+            _services = app.Services;
+
+            return app;
+        }
+
+        // Method to get services globally
+        public static T GetService<T>() where T : class
+        {
+            if (_services == null)
+            {
+                throw new InvalidOperationException("Dependency Injection container is not initialized.");
+            }
+
+            var service = _services.GetService<T>();
+
+            if (service == null)
+            {
+                throw new InvalidOperationException($"Service {typeof(T).Name} is not registered in the DI container.");
+            }
+
+            return service;
         }
     }
 }
