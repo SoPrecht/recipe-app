@@ -55,8 +55,12 @@ namespace MeinRezeptbuch.ViewModels
         [RelayCommand]
         public void OpenIngredientPopup()
         {
-            _popup = null;
-            AppShell.Current.ShowPopup(_popup);
+            _popup = MauiProgram.GetService<PopupIngredientPage>();
+            if (_popup != null)
+            {
+                AppShell.Current.ShowPopup(_popup);
+            }
+            
         }
 
         [RelayCommand]

@@ -10,7 +10,7 @@ namespace MeinRezeptbuch.Views
         {
             InitializeComponent();
             BindingContext = vm;
-            vm.SetPopupReference(this);
+            //vm.SetPopupReference(this);
         }
     }
 }
