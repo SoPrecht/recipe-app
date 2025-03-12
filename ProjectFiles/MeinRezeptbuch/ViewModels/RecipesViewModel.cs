@@ -20,7 +20,7 @@ namespace MeinRezeptbuch.ViewModels
             recipes = new ObservableCollection<Recipe>();
             Task.Run(async () => await RefreshRecipesAsync());
 
-            // 🔹 Listen for new recipes being added
+            // Listen for new recipes being added
             WeakReferenceMessenger.Default.Register<RecipeAddedMessage>(this, async (r, m) =>
             {
                 await RefreshRecipesAsync();
@@ -57,6 +57,19 @@ namespace MeinRezeptbuch.ViewModels
             else
             {
                 await Shell.Current.GoToAsync(nameof(NewRecipePage));
+            }
+        }
+
+        /// <summary>
+        /// Command to delete a recipe
+        /// </summary>
+        [RelayCommand]
+        public async Task DeleteRecipe(Recipe recipe)
+        {
+            if (recipe != null)
+            {
+                await _recipeService.DeleteRecipeAsync(recipe);
+                Recipes.Remove(recipe);
             }
         }
     }

@@ -6,7 +6,8 @@
     xmlns:vm="clr-namespace:MeinRezeptbuch.ViewModels"
     xmlns:m="clr-namespace:MeinRezeptbuch.Models"
     xmlns:services="clr-namespace:MeinRezeptbuch.Services"
-    x:DataType="vm:IngredientViewModel">
+    x:DataType="vm:IngredientViewModel"
+    BackgroundColor="{StaticResource Background}">
 
     <VerticalStackLayout Padding="20">
 
@@ -20,11 +21,13 @@
         <ScrollView>
             <CollectionView ItemsSource="{Binding Ingredients}" SelectionMode="Single">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="m:Ingredient">
                         <SwipeView>
                             <SwipeView.RightItems>
                                 <SwipeItems>
-                                    <SwipeItem Text="Delete" BackgroundColor="Red" Command="{Binding DeleteIngredientCommand}" CommandParameter="{Binding}" />
+                                    <SwipeItem Text="Delete" BackgroundColor="Red" 
+                                               Command="{Binding BindingContext.DeleteIngredientCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}" 
+                                               CommandParameter="{Binding}" />
                                 </SwipeItems>
                             </SwipeView.RightItems>
                             <Border Margin="5" Padding="10" BackgroundColor="{StaticResource BoxType1}" Stroke="{StaticResource Stroke1}" StrokeThickness="2">
@@ -35,7 +38,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <!-- Ingredient Details -->
-                                    <VerticalStackLayout Grid.Column="0" x:DataType="m:Ingredient">
+                                    <VerticalStackLayout Grid.Column="0" >
                                         <Label FontSize="18" Text="{Binding Name}" TextColor="Black" VerticalOptions="Center" />
                                         <Label FontSize="14" Text="{Binding Type}" TextColor="Gray" VerticalOptions="Center" />
                                     </VerticalStackLayout>
