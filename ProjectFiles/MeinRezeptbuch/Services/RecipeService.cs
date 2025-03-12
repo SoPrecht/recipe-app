@@ -33,6 +33,7 @@ namespace MeinRezeptbuch.Services
         // Add a new recipe
         public Task<int> AddRecipeAsync(Recipe recipe)
         {
+            Debug.WriteLine($"Adding recipe: {recipe.Name} {recipe.Id}");
             return _database.InsertAsync(recipe);
         }
 
@@ -62,6 +63,7 @@ namespace MeinRezeptbuch.Services
         // Update an existing recipe
         public Task<int> UpdateRecipeAsync(Recipe recipe)
         {
+            Debug.WriteLine($"Updating recipe: {recipe.Id}");
             return _database.UpdateAsync(recipe);
         }
 

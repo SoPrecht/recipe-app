@@ -26,6 +26,7 @@ namespace MeinRezeptbuch.ViewModels
         public string instructions;
         [ObservableProperty]
         public ObservableCollection<IngredientEntry> ingredients;
+        private bool _isQueryApplied = false;
 
         public NewRecipeViewModel(RecipeService recipeService, IngredientEntryService ingredientEntryService, int? recipeId = null)
         {
@@ -36,6 +37,10 @@ namespace MeinRezeptbuch.ViewModels
 
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
+            //safety check to prevent multiple calls
+            if (_isQueryApplied) return;
+            _isQueryApplied = true;
+
             if (query.ContainsKey("recipeId") && query["recipeId"] is int id)
             {
                 _recipeId = id;
@@ -68,6 +73,7 @@ namespace MeinRezeptbuch.ViewModels
             }
         }
 
+        // ex async
         private async void CreateNewRecipe()
         {
             _recipe = new Recipe { Name = "New Recipe" };

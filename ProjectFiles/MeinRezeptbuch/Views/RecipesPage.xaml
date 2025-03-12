@@ -53,18 +53,18 @@
                                 </Grid.ColumnDefinitions>
 
                                 <!--  Recipe Name  -->
-                                <Label
-                                Grid.Column="0"
-                                FontSize="18"
-                                Text="{Binding Name}"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
+                                        <Label
+                                    Grid.Column="0"
+                                    FontSize="18"
+                                    Text="{Binding Name}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
                                 <!--  Open Recipe Button  -->
                                 <Button
-                                Grid.Column="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecipesViewModel}}, Path=OpenNewRecipeAsnycCommand}"
-                                CommandParameter="{Binding Id}"
-                                Text="View" />
+                                    Grid.Column="1"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecipesViewModel}}, Path=OpenNewRecipeAsnycCommand}"
+                                    CommandParameter="{Binding Id}"
+                                    Text="View" />
                             </Grid>
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="15,15,15,15" />
