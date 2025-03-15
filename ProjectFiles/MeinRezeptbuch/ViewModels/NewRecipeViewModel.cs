@@ -78,7 +78,7 @@ namespace MeinRezeptbuch.ViewModels
             _recipe = new Recipe { Name = "New Recipe" };
             await _recipeService.AddRecipeAsync(_recipe);
             _recipeId = _recipe.Id;
-            Name = _recipe.Name;
+            //Name = _recipe.Name;
             Description = _recipe.Description;
             Instructions = _recipe.Instructions;
         }
