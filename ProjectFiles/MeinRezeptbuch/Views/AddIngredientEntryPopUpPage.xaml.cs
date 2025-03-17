@@ -16,4 +16,13 @@ public partial class AddIngredientEntryPopUpPage : Popup
         BindingContext = vm;
         vm.SetPopupReference(this);
     }
+
+    private void OnIngredientNameTextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (BindingContext is IngredientEntryViewModel vm)
+        {
+            vm.SearchIngredientSuggestionsCommand.Execute(null);
+        }
+    }
+
 }

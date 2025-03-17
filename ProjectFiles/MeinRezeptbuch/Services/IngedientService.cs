@@ -59,4 +59,15 @@ public class IngredientService
     {
         return _database.Table<Ingredient>().Where(i => i.ID == ingredientId).FirstOrDefaultAsync();
     }
+
+    public async Task<List<Ingredient>> GetIngredientsByPartialNameAsync(string partialName)
+    {
+        if (string.IsNullOrWhiteSpace(partialName))
+            return new List<Ingredient>();
+
+        return await _database.Table<Ingredient>()
+            .Where(i => i.Name.Contains(partialName))
+            .ToListAsync();
+    }
+
 }

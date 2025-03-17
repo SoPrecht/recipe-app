@@ -8,7 +8,7 @@
     xmlns:vm="clr-namespace:MeinRezeptbuch.ViewModels"
     x:DataType="vm:IngredientEntryViewModel">
 
-    <VerticalStackLayout MinimumWidthRequest="300">
+    <VerticalStackLayout BackgroundColor="{StaticResource BoxType2}" MinimumWidthRequest="300">
 
         <Label
             HorizontalOptions="Center"
@@ -18,7 +18,31 @@
         <Entry
             x:Name="ingredientNameEntry"
             Placeholder="Ingredient Name"
-            Text="{Binding IngredientName}" />
+            Text="{Binding IngredientName}" 
+            TextChanged="OnIngredientNameTextChanged" />
+
+        <Border BackgroundColor="{StaticResource BoxType1}" 
+                            Stroke="Black"
+                            StrokeThickness="2"
+                            Padding="5">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="5" />
+            </Border.StrokeShape>
+            <CollectionView 
+            ItemsSource="{Binding IngredientSuggestions}"
+            IsVisible="{Binding IngredientSuggestions.Count, Converter={StaticResource BooleanConverter}}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <Label Text="{Binding .}" Padding="5" TextColor="Black" FontSize="16" VerticalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:IngredientEntryViewModel}}, Path=SelectIngredientCommand}"
+                                                  CommandParameter="{Binding .}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Border>
 
         <Picker
             x:Name="ingredientTypePicker"

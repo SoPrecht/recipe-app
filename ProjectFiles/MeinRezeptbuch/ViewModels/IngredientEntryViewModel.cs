@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using CommunityToolkit.Maui.Views;
 using System.Diagnostics;
-
+using System.Linq;
 
 namespace MeinRezeptbuch.ViewModels
 {
@@ -17,9 +17,9 @@ namespace MeinRezeptbuch.ViewModels
         private Popup? _popup;
 
         public ObservableCollection<IngredientEntry> IngredientEntries { get; } = new();
-
         public ObservableCollection<IngredientType> IngredientTypes { get; } = new(Enum.GetValues<IngredientType>());
         public ObservableCollection<UnitEnum> Units { get; } = new(Enum.GetValues<UnitEnum>());
+        public ObservableCollection<string> IngredientSuggestions { get; } = new();
 
         [ObservableProperty]
         public string ingredientName;
@@ -38,7 +38,6 @@ namespace MeinRezeptbuch.ViewModels
 
         private int _recipeId;
 
-
         public IngredientEntryViewModel(IngredientEntryService ingredientEntryService, IngredientService ingredientService, int? recipeId = null)
         {
             _ingredientService = ingredientService;
@@ -54,7 +53,7 @@ namespace MeinRezeptbuch.ViewModels
 
         private async void LoadIngredientEntries()
         {
-            Debug.WriteLine("LoadIngredientEntries is beeing called!!!!!");
+            Debug.WriteLine("LoadIngredientEntries is being called!!!!!");
             IngredientEntries.Clear();
 
             var ingredientEntries = await _ingredientEntryService.GetIngredientEntriesByRecipeIdAsync(_recipeId);
@@ -70,6 +69,35 @@ namespace MeinRezeptbuch.ViewModels
                 }
 
                 IngredientEntries.Add(entry);
+            }
+        }
+
+        [RelayCommand]
+        public async Task SearchIngredientSuggestionsAsync()
+        {
+            if (string.IsNullOrWhiteSpace(IngredientName))
+            {
+                IngredientSuggestions.Clear();
+                return;
+            }
+
+            var ingredients = await _ingredientService.GetIngredientsByPartialNameAsync(IngredientName);
+            IngredientSuggestions.Clear();
+            foreach (var ingredient in ingredients)
+            {
+                IngredientSuggestions.Add(ingredient.Name);
+            }
+            Debug.WriteLine($"IngredientSuggestions now contains {IngredientSuggestions.Count} items.");
+        }
+
+        [RelayCommand]
+        public async Task SelectIngredientAsync(string selectedIngredientName)
+        {
+            var ingredient = await _ingredientService.GetIngredientByNameAsync(selectedIngredientName);
+            if (ingredient != null)
+            {
+                IngredientName = ingredient.Name;
+                SelectedIngredientType = ingredient.Type;
             }
         }
 
@@ -114,6 +142,7 @@ namespace MeinRezeptbuch.ViewModels
             Unit = default;
             Amount = 0;
             Notes = string.Empty;
+            IngredientSuggestions.Clear();
 
             _popup?.Close();
         }

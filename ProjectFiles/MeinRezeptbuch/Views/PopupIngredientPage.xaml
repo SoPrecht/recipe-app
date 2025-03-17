@@ -7,10 +7,11 @@
     xmlns:vm="clr-namespace:MeinRezeptbuch.ViewModels"
     x:DataType="vm:IngredientViewModel">
 
+
     <VerticalStackLayout
         Margin="40"
         Padding="20"
-        BackgroundColor="White"
+        BackgroundColor="{StaticResource BoxType2}"
         VerticalOptions="Center">
         <Label
             FontAttributes="Bold"
@@ -27,12 +28,12 @@
             SelectedItem="{Binding SelectedIngredientType}" />
 
         <HorizontalStackLayout Spacing="10">
-            <Button Command="{Binding SaveIngredientCommand}" Text="Save" />
             <Button
                 BackgroundColor="Red"
                 Command="{Binding ClosePopupCommand}"
                 Text="Cancel"
                 TextColor="White" />
+            <Button Command="{Binding SaveIngredientCommand}" Text="Save" />
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </mct:Popup>

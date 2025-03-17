@@ -28,7 +28,7 @@ namespace MeinRezeptbuch.ViewModels
         public ObservableCollection<IngredientEntry> ingredients;
         private bool _isQueryApplied = false;
 
-        public NewRecipeViewModel(RecipeService recipeService, IngredientEntryService ingredientEntryService, int? recipeId = null)
+        public NewRecipeViewModel(RecipeService recipeService, IngredientEntryService ingredientEntryService)
         {
             _recipeService = recipeService;
             _ingredientEntryService = ingredientEntryService;
